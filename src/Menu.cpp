@@ -627,6 +627,8 @@ bool Menu::startOtherHeuristicsMenu() {
 
 // void Menu::ourHeuristicsAlgorithm() {}
 
+//TO-DO : 4.4. TSP in the Real World
+
 bool Menu::startTSPRealWorldMenu() {
     if(!verifyLoadedGraph()) return true;
 
@@ -648,8 +650,6 @@ bool Menu::startTSPRealWorldMenu() {
         if(TSPRealWorldChoice == "1"){
             // ourHeuristicsAlgorithm();
         }
-
-            // ...
 
         else if(TSPRealWorldChoice == "2"){
             algorithmDescription(3);
