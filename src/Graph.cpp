@@ -2,9 +2,15 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <cmath>
+#include <algorithm>
 #include <filesystem>
+
 using namespace std;
 
+/*
+ * -----------GRAPH----------- *
+ */
 
 Graph::Graph() {}
 
@@ -14,105 +20,76 @@ Graph::~Graph() {
     }
 }
 
-void Graph::addNode(int index, double latitude = 0.0, double longitude = 0.0) {
-    if (nodes.find(index) == nodes.end()) {
-        nodes[index] = new Node(index, latitude, longitude);
+void Graph::addNode(int index, double latitude, double longitude) {
+    auto [it, inserted] = nodes.try_emplace(index, new Node(index, latitude, longitude));
+    if (!inserted) {
+        cerr << "Node " << index << " already exists.\n";
     }
+}
+
+void Graph::addNode(int index) {
+    addNode(index, 0.0, 0.0);
 }
 
 void Graph::addBidirectionalEdge(int srcIndex, int destIndex, double weight) {
-    if (nodes.find(srcIndex) == nodes.end() || nodes.find(destIndex) == nodes.end()) {
-        cerr << "Error: Node not found, cannot add edge." << endl;
+    Node* srcNode = findNode(srcIndex);
+    Node* destNode = findNode(destIndex);
+    if (!srcNode || !destNode) {
+        cerr << "Error: One or both nodes not found, cannot add edge.\n";
         return;
     }
-    adjacencyList[srcIndex].emplace_back(destIndex, weight);
-    adjacencyList[destIndex].emplace_back(srcIndex, weight);
+    Edge* edgeToDest = new Edge(srcNode, destNode, weight);
+    Edge* edgeToSrc = new Edge(destNode, srcNode, weight);
+    srcNode->addEdge(edgeToDest);
+    destNode->addEdge(edgeToSrc);
 }
 
-Node* Graph::findNode(int index) {
+Node * Graph::findNode(int index) const {
     auto it = nodes.find(index);
     return it != nodes.end() ? it->second : nullptr;
 }
 
-int Graph::createRealWorldGraph(const string& nodesFilePath, const string& edgesFilePath) {
-    ifstream nodesFile(nodesFilePath);
-    ifstream edgesFile(edgesFilePath);
-    if (!nodesFile.is_open() || !edgesFile.is_open()) {
-        cerr << "Error opening files." << endl;
-        return 1;
-    }
-
-    string line, index, latitude, longitude;
-    getline(nodesFile, line); 
-    while (getline(nodesFile, line)) {
-        istringstream iss(line);
-        getline(iss, index, ',');
-        getline(iss, longitude, ',');
-        getline(iss, latitude, ',');
-        addNode(stoi(index), stod(latitude), stod(longitude));
-    }
-
-    // Load edges
-    getline(edgesFile, line); // Skip header if present
-    string sourceIndex, destinyIndex, distance;
-    while (getline(edgesFile, line)) {
-        istringstream iss(line);
-        getline(iss, sourceIndex, ',');
-        getline(iss, destinyIndex, ',');
-        getline(iss, distance, ',');
-        addBidirectionalEdge(stoi(sourceIndex), stoi(destinyIndex), stod(distance));
-    }
-
-    nodesFile.close();
-    edgesFile.close();
-    return 0;
-}
-
 void Graph::displayGraph() {
-    for (auto& node : adjacencyList) {
-        cout << "Node " << node.first << " connects to:\n";
-        for (auto& edge : node.second) {
-            cout << "  - Node " << edge.dest << " with weight " << edge.weight << "\n";
+    cout << "Graph nodes:\n";
+    for (auto& pair : nodes) {
+        Node* node = pair.second;
+        cout << "Node " << node->getId() << " (Latitude: " << node->getLatitude() << ", Longitude: " << node->getLongitude() << ")\n";
+        cout << "   Adjacent nodes:\n";
+        for (auto& edge : node->getAdjacencies()) {
+            Node* destNode = edge->getDestination();
+            cout << "     - Node " << destNode->getId() << " with weight " << edge->getDistance() << "\n";
         }
+        cout << endl;
+    }
+
+    cout << "Graph edges:\n";
+    for (auto& pair : nodes) {
+        Node* node = pair.second;
+        cout << "Edges from Node " << node->getId() << ":\n";
+        for (auto& edge : node->getAdjacencies()) {
+            cout << "   - Node " << node->getId() << " to Node " << edge->getDestination()->getId() << " with weight " << edge->getDistance() << "\n";
+        }
+        cout << endl;
     }
 }
 
-int Graph::createToyGraph(const string& filePath) {
-    ifstream file(filePath);
-    if (!file.is_open()) {
-        cerr << "Error opening file: " << filePath << endl;
-        return 1;
+
+void Graph::clearNodes() {
+    for (auto& pair : nodes) {
+        delete pair.second;
     }
-
-    string line;
-    getline(file, line); 
-
-    string sourceIndex, destinyIndex, distance;
-    while (getline(file, line)) {
-        istringstream iss(line);
-        getline(iss, sourceIndex, ',');
-        getline(iss, destinyIndex, ',');
-        getline(iss, distance, ',');
-
-        int src = stoi(sourceIndex);
-        int dst = stoi(destinyIndex);
-        double dist = stod(distance);
-
-        if (findNode(src) == nullptr) {
-            addNode(src);
-        }
-        if (findNode(dst) == nullptr) {
-            addNode(dst);
-        }
-
-        addBidirectionalEdge(src, dst, dist);
-    }
-
-    file.close();
-    return 0;
+    nodes.clear();
 }
 
-int Graph::createExtraGraphs(const string &edgesFilePath) {
+unordered_map<int, Node*> Graph::getNodes() const {
+    return nodes;
+}
+
+/*
+ * -----------READ FILES----------- *
+ */
+
+int Graph::readExtraGraphs(const string &edgesFilePath) {
     ifstream file(edgesFilePath);
     if (!file.is_open()) {
         cerr << "Error opening file: " << edgesFilePath << endl;
@@ -126,7 +103,6 @@ int Graph::createExtraGraphs(const string &edgesFilePath) {
     size_t end = fileName.find_first_not_of("0123456789", start);
     int nodeCount = stoi(fileName.substr(start, end - start));
 
-    // Create nodes if they don't exist
     for (int i = 0; i < nodeCount; i++) {
         if (findNode(i) == nullptr) {
             addNode(i);
@@ -153,11 +129,76 @@ int Graph::createExtraGraphs(const string &edgesFilePath) {
     return 0;
 }
 
-void Graph::clearNodes() {
-    for (auto& pair : nodes) {
-        delete pair.second;
+int Graph::readRealWorldGraph(const string& nodesFilePath, const string& edgesFilePath) {
+    ifstream nodesFile(nodesFilePath);
+    ifstream edgesFile(edgesFilePath);
+    if (!nodesFile.is_open() || !edgesFile.is_open()) {
+        cerr << "Error opening files." << endl;
+        return 1;
     }
 
-    nodes.clear();
+    string line, index, latitude, longitude;
+    getline(nodesFile, line);
+    while (getline(nodesFile, line)) {
+        istringstream iss(line);
+        getline(iss, index, ',');
+        getline(iss, longitude, ',');
+        getline(iss, latitude, ',');
+        addNode(stoi(index), stod(latitude), stod(longitude));
+    }
+
+    getline(edgesFile, line);
+    string sourceIndex, destinyIndex, distance;
+    while (getline(edgesFile, line)) {
+        istringstream iss(line);
+        getline(iss, sourceIndex, ',');
+        getline(iss, destinyIndex, ',');
+        getline(iss, distance, ',');
+
+        int src = stoi(sourceIndex);
+        int dst = stoi(destinyIndex);
+        double dist = stod(distance);
+
+        addBidirectionalEdge(src, dst, dist);
+    }
+
+    nodesFile.close();
+    edgesFile.close();
+    return 0;
+}
+
+int Graph::readToyGraph(const string& filePath) {
+    ifstream file(filePath);
+    if (!file.is_open()) {
+        cerr << "Error opening file: " << filePath << endl;
+        return 1;
+    }
+
+    string line;
+    getline(file, line);
+
+    string sourceIndex, destinyIndex, distance;
+    while (getline(file, line)) {
+        istringstream iss(line);
+        getline(iss, sourceIndex, ',');
+        getline(iss, destinyIndex, ',');
+        getline(iss, distance, ',');
+
+        int src = stoi(sourceIndex);
+        int dst = stoi(destinyIndex);
+        double dist = stod(distance);
+
+        if (findNode(src) == nullptr) {
+            addNode(src);
+        }
+        if (findNode(dst) == nullptr) {
+            addNode(dst);
+        }
+
+        addBidirectionalEdge(src, dst, dist);
+    }
+
+    file.close();
+    return 0;
 }
 

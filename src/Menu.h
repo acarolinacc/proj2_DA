@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <chrono>
 #include "Graph.h"
+#include "Algorithms.h"
 
 class Menu {
 protected:
@@ -19,19 +20,19 @@ public:
 
     void start();
 
-    void helpMainMenu();
+    void helpMenu();
 
-    void returnMessage();
+    void returnMenu();
 
-    void quitMessage();
+    void quit();
 
     bool verifyLoadedGraph();
 
-    bool feedbackLoop();
+    bool messageLoop();
 
     static void algorithmDescription(int menu);
 
-    bool startLoadMenu();
+    bool LoadMenu();
 
     void helpLoadMenu();
 
@@ -49,22 +50,23 @@ public:
 
     bool verifyGraphTypeBacktracking();
 
-    bool startBacktrackingMenu();
+    bool BacktrackingMenu();
 
 
     /*
      * -----------TRIANGULAR APPROXIMATION HEURISTIC MENU----------- *
      */
 
-    bool startTriApproxMenu();
+    bool TriApproxMenu();
 
     /*
      * -----------OTHER HEURISTIC MENU----------- *
      */
+    void otherHeuristicsAlgorithm();
 
-    bool startOtherHeuristicsMenu();
+    bool OtherHeuristicsMenu();
 
-    bool startTSPRealWorldMenu();
+    bool TSPRealWorldMenu();
 
 };
 

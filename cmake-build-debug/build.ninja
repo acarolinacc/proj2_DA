@@ -61,6 +61,24 @@ build CMakeFiles/proj2_DA.dir/src/Menu.cpp.obj: CXX_COMPILER__proj2_DA_Debug C$:
   OBJECT_DIR = CMakeFiles\proj2_DA.dir
   OBJECT_FILE_DIR = CMakeFiles\proj2_DA.dir\src
 
+build CMakeFiles/proj2_DA.dir/src/Edge.cpp.obj: CXX_COMPILER__proj2_DA_Debug C$:/Users/acaro/proj2_DA/src/Edge.cpp || cmake_object_order_depends_target_proj2_DA
+  DEP_FILE = CMakeFiles\proj2_DA.dir\src\Edge.cpp.obj.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles\proj2_DA.dir
+  OBJECT_FILE_DIR = CMakeFiles\proj2_DA.dir\src
+
+build CMakeFiles/proj2_DA.dir/src/Node.cpp.obj: CXX_COMPILER__proj2_DA_Debug C$:/Users/acaro/proj2_DA/src/Node.cpp || cmake_object_order_depends_target_proj2_DA
+  DEP_FILE = CMakeFiles\proj2_DA.dir\src\Node.cpp.obj.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles\proj2_DA.dir
+  OBJECT_FILE_DIR = CMakeFiles\proj2_DA.dir\src
+
+build CMakeFiles/proj2_DA.dir/src/Algorithms.cpp.obj: CXX_COMPILER__proj2_DA_Debug C$:/Users/acaro/proj2_DA/src/Algorithms.cpp || cmake_object_order_depends_target_proj2_DA
+  DEP_FILE = CMakeFiles\proj2_DA.dir\src\Algorithms.cpp.obj.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles\proj2_DA.dir
+  OBJECT_FILE_DIR = CMakeFiles\proj2_DA.dir\src
+
 build CMakeFiles/proj2_DA.dir/main.cpp.obj: CXX_COMPILER__proj2_DA_Debug C$:/Users/acaro/proj2_DA/main.cpp || cmake_object_order_depends_target_proj2_DA
   DEP_FILE = CMakeFiles\proj2_DA.dir\main.cpp.obj.d
   FLAGS = -g
@@ -75,7 +93,7 @@ build CMakeFiles/proj2_DA.dir/main.cpp.obj: CXX_COMPILER__proj2_DA_Debug C$:/Use
 #############################################
 # Link the executable proj2_DA.exe
 
-build proj2_DA.exe: CXX_EXECUTABLE_LINKER__proj2_DA_Debug CMakeFiles/proj2_DA.dir/src/Graph.cpp.obj CMakeFiles/proj2_DA.dir/src/Menu.cpp.obj CMakeFiles/proj2_DA.dir/main.cpp.obj
+build proj2_DA.exe: CXX_EXECUTABLE_LINKER__proj2_DA_Debug CMakeFiles/proj2_DA.dir/src/Graph.cpp.obj CMakeFiles/proj2_DA.dir/src/Menu.cpp.obj CMakeFiles/proj2_DA.dir/src/Edge.cpp.obj CMakeFiles/proj2_DA.dir/src/Node.cpp.obj CMakeFiles/proj2_DA.dir/src/Algorithms.cpp.obj CMakeFiles/proj2_DA.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\proj2_DA.dir

@@ -13,5 +13,12 @@ add_executable(proj2_DA
         src/Graph.h
         src/Menu.cpp
         src/Menu.h
+        src/Edge.cpp
+        src/Edge.h
+        src/Node.cpp
+        src/Node.h
+        src/Algorithms.cpp
+        src/Algorithms.h
+        src/MutablePriorityQueue.h
         main.cpp
         README.md)

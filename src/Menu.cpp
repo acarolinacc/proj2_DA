@@ -1,5 +1,6 @@
 #include "Menu.h"
 using namespace std;
+using namespace std::chrono;
 
 Menu::Menu(const Graph &graph, const int &graph_loaded): graph(graph), graph_loaded(graph_loaded) {}
 
@@ -31,30 +32,30 @@ void Menu::start(){
 
 
         if (choice == "1"){
-            running = startLoadMenu();
+            running = LoadMenu();
         }
 
         else if(choice == "2"){
-            running = startBacktrackingMenu();
+            running = BacktrackingMenu();
         }
 
         else if (choice == "3"){
-            running = startTriApproxMenu();
+            running = TriApproxMenu();
         }
 
         else if(choice == "4") {
-            running = startOtherHeuristicsMenu();
+            running = OtherHeuristicsMenu();
         }
 
         else if(choice == "5") {
-            running = startTSPRealWorldMenu();
+            running = TSPRealWorldMenu();
         }
 
         else if(choice == "6")
-            helpMainMenu();
+            helpMenu();
 
         else if(choice == "q"){
-            quitMessage();
+            quit();
             running = false;
         }
         else{
@@ -65,71 +66,11 @@ void Menu::start(){
 
 }
 
-void Menu::helpMainMenu() {
-    cout << "\n|===================== Help Overview =====================|\n";
-    cout << "|                                                         |\n";
-    cout << "| 1 - Load Graph: Allows you to import graph data from a  |\n";
-    cout << "|     file. Available types: Toy Graphs, Fully-Connected  |\n";
-    cout << "|     Graphs, and Real-World Graphs.                      |\n";
-    cout << "| 2 - Backtracking Algorithm: Executes a complete search  |\n";
-    cout << "|     to identify the shortest possible tour through all  |\n";
-    cout << "|     nodes.                                              |\n";
-    cout << "| 3 - Triangular Heuristic: Uses the triangular           |\n";
-    cout << "|     inequality to estimate a near-optimal path with     |\n";
-    cout << "|     improved efficiency.                                |\n";
-    cout << "| 4 - Other Heuristics: Explore additional heuristic      |\n";
-    cout << "|     strategies developed by our team to find efficient  |\n";
-    cout << "|     routes across the graphs.                           |\n";
-    cout << "|                                                         |\n";
-    cout << "| Usage Tips: Start by loading a graph to set up the      |\n";
-    cout << "|     environment. Subsequently, you can execute the      |\n";
-    cout << "|     algorithms to discover the shortest routes.         |\n";
-    cout << "|                                                         |\n";
-    cout << "|=========================================================|\n";
-    cout << "|                                                         |\n";
-}
+/*
+ * -----------LOAD MENU----------- *
+ */
 
-
-void Menu::returnMessage() {
-    cout << "\n|=========================================================|\n";
-    cout << "|                                                         |\n";
-    cout << "| Ready to navigate? Choose an option to proceed.         |\n";
-    cout << "|                                                         |\n";
-    cout << "|=========================================================|\n";
-}
-
-void Menu::quitMessage() {
-    cout << "\n|=========================================================|\n";
-    cout << "|                                                         |\n";
-    cout << "| It's been a pleasure helping you navigate.              |\n";
-    cout << "| Thank you for using TSP Explorer!                       |\n";
-    cout << "| Have a great day!                                       |\n";
-    cout << "|                                                         |\n";
-    cout << "|=========================================================|\n";
-}
-
-
-bool Menu::feedbackLoop() {
-    string helpChoice;
-    while (true) {
-        getline(cin, helpChoice);
-        cout << "|                                                           |\n";
-
-        if (helpChoice == "back") {
-            returnMessage();
-            return false;
-        } else if (helpChoice == "stay"){
-            return true;
-
-        } else {
-            cout << "| Invalid selection. Please enter a valid option.          |\n";
-            cout << "|                                                           |\n";
-            cout << "| Try again: ";
-        }
-    }
-}
-
-bool Menu::startLoadMenu() {
+bool Menu::LoadMenu() {
     bool running;
 
     cout << "|-----------------------------------------------------------|\n";
@@ -175,12 +116,12 @@ bool Menu::startLoadMenu() {
         }
 
         else if(choice == "r"){
-            returnMessage();
+            returnMenu();
             return true;
         }
 
         else if(choice == "q"){
-            quitMessage();
+            quit();
             return false;
         }
 
@@ -195,205 +136,9 @@ bool Menu::startLoadMenu() {
 }
 
 
-void Menu::helpLoadMenu() {
-    bool running = true;
-    while(running) {
-        string helpChoice;
-
-        cout << "\n|======================= Help: Graph Loading ======================|\n";
-        cout << "|                                                                   |\n";
-        cout << "| 1 - Toy Graph: Load small-scale graphs ideal for initial testing. |\n";
-        cout << "| 2 - Fully Connected Graph: Load larger, fully connected graphs.   |\n";
-        cout << "| 3 - Real World Graph: Load graphs simulating real-world scenarios.|\n";
-        cout << "|                                                                   |\n";
-        cout << "| Type 'back' to return to the previous menu                        |\n";
-        cout << "| Enter your choice: ";
-        running = feedbackLoop();
-        cout << "|                                                                   |\n";
-    }
-}
-
-
-bool Menu::toyGraphs(){
-
-    cout << "|-----------------------------------------------------------|\n";
-    cout << "|                                                           |\n";
-
-    while (true){
-        string choice;
-        cout << "\n|=========================== Toy Graphs ===========================|\n";
-        cout << "|                                                                   |\n";
-        cout << "| 1 - Shipping                                                      |\n";
-        cout << "| 2 - Stadiums                                                      |\n";
-        cout << "| 3 - Tourism                                                       |\n";
-        cout << "| r - Return to the previous page                                   |\n";
-        cout << "| q - Quit the program                                              |\n";
-        cout << "|                                                                   |\n";
-        cout << "| Enter your choice: ";
-        getline(cin, choice);
-        cout << "|                                                                   |\n";
-
-        if(choice == "1") {
-            graph.clearNodes();
-            graph.createToyGraph("../data/Toy-Graphs/Toy-Graphs/shipping.csv");
-            graph_loaded = 1;
-            break;
-        }
-
-
-        else if(choice == "2"){
-            graph.clearNodes();
-            graph.createToyGraph("../data/Toy-Graphs/Toy-Graphs/stadiums.csv");
-            graph_loaded = 1;
-            break;
-        }
-
-        else if(choice == "3"){
-            graph.clearNodes();
-            graph.createToyGraph("../data/Toy-Graphs/Toy-Graphs/tourism.csv");
-            graph_loaded = 1;
-            break;
-        }
-
-        else if(choice == "r"){
-            returnMessage();
-            return true;
-        }
-
-        else if(choice == "q"){
-            quitMessage();
-            return false;
-        }
-
-        else{
-            cout << "| Invalid selection. Please enter a valid option.          |\n";
-            cout << "|                                                           |\n";
-            cout << "| Try again: ";
-        }
-    }
-    graphLoaded();
-    returnMessage();
-    return true;
-}
-
-bool Menu::extendedGraphs() {
-    while (true){
-        string choice;
-        cout << "\n|========================== Extended Graphs ========================|\n";
-        cout << "|                                                                   |\n";
-        cout << "| Choose the number of edges to use from the following ranges:      |\n";
-        cout << "|   | 25 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |\n";
-        cout << "|                                                                   |\n";
-        cout << "| r - Return to the previous page                                   |\n";
-        cout << "| q - Quit the program                                              |\n";
-        cout << "|                                                                   |\n";
-        cout << "| Enter your value: ";
-        getline(cin, choice);
-        cout << "|                                                                   |\n";
-
-        int choiceNum;
-        try {
-            choiceNum = stoi(choice);
-        } catch (const invalid_argument& e) {
-            cout << "| Invalid selection. Please enter a valid option.          |\n";
-            cout << "|                                                           |\n";
-            cout << "| Try again: ";
-            continue;
-        }
-
-        if ((choiceNum >= 100 && choiceNum <= 900 && choiceNum % 100 == 0) || choiceNum == 25 || choiceNum == 50) {
-            graph.clearNodes();
-            graph.createExtraGraphs("../data/Extra_Fully_Connected_Graphs/Extra_Fully_Connected_Graphs/edges_" + choice + ".csv");
-            graph_loaded = 2;
-            break;
-        }
-
-        else if(choice == "r"){
-            returnMessage();
-            return true;
-        }
-
-        else if(choice == "q"){
-            quitMessage();
-            return false;
-        }
-
-        else{
-            cout << "| Invalid selection. Please enter a valid option.          |\n";
-            cout << "|                                                           |\n";
-            cout << "| Try again: ";
-        }
-    }
-    graphLoaded();
-    returnMessage();
-    return true;
-}
-
-bool Menu::realWorldGraphs() {
-
-    cout << "\n|============================= WARNING =============================|\n";
-    cout << "| Dense graph creation times may vary:                             |\n";
-    cout << "| - Graph 1 may take several seconds.                              |\n";
-    cout << "| - Graph 3 may require several minutes. Consider this before you  |\n";
-    cout << "|   proceed!                                                       |\n";
-    cout << "|===================================================================|\n";
-
-    while (true){
-        string choice;
-        cout << "\n|========================= Real World Graphs =======================|\n";
-        cout << "|                                                                   |\n";
-        cout << "| 1 - Graph 1 (1000 nodes)                                          |\n";
-        cout << "| 2 - Graph 2 (5000 nodes)                                          |\n";
-        cout << "| 3 - Graph 3 (10000 nodes)                                         |\n";
-        cout << "| r - Return to the previous page                                   |\n";
-        cout << "| q - Quit the program                                              |\n";
-        cout << "|                                                                   |\n";
-        cout << "| Enter your choice: ";
-        getline(cin, choice);
-        cout << "|                                                                   |\n";
-
-        if(choice == "1") {
-            graph.clearNodes();
-            graph.createRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph1/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph1/edges.csv");
-            graph_loaded = 3;
-            break;
-        }
-
-
-        else if(choice == "2"){
-            graph.clearNodes();
-            graph.createRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph2/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph2/edges.csv");
-            graph_loaded = 3;
-            break;
-        }
-
-        else if(choice == "3"){
-            graph.clearNodes();
-            graph.createRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph3/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph3/edges.csv");
-            graph_loaded = 3;
-            break;
-        }
-
-        else if(choice == "r"){
-            returnMessage();
-            return true;
-        }
-
-        else if(choice == "q"){
-            quitMessage();
-            return false;
-        }
-
-        else{
-            cout << "| Invalid selection. Please enter a valid option.          |\n";
-            cout << "|                                                           |\n";
-            cout << "| Try again: ";
-        }
-    }
-    graphLoaded();
-    returnMessage();
-    return true;
-}
+/*
+ * -----------LOAD'S MESSAGES MENU----------- *
+ */
 
 void Menu::graphLoaded() {
     cout << "\n|================= Graph Load Successful =================|\n";
@@ -444,49 +189,228 @@ bool Menu::verifyGraphTypeBacktracking() {
     return true;
 }
 
-bool Menu::startBacktrackingMenu() {
-    if(!verifyGraphTypeBacktracking()) return true;
+/*
+ * --------------------------------- *
+ */
 
-    string backtrackingChoice;
 
-    cout << "\n|================= Backtracking Menu =====================|\n";
-    cout << "|                                                         |\n";
 
-    while (true) {
-        cout << "| 1 - Execute Algorithm                                   |\n";
-        cout << "| 2 - Algorithm Details                                   |\n";
-        cout << "| r - Return to Main Menu                                 |\n";
-        cout << "| q - Exit Program                                        |\n";
-        cout << "|                                                         |\n";
-        cout << "| Select an option: ";
-        getline(cin, backtrackingChoice);
-        cout << "|                                                         |\n";
+/*
+ * -----------TOY GRAPHS MENU----------- *
+ */
 
-        if(backtrackingChoice == "1"){
-            // backtrackingAlgorithm();
+bool Menu::toyGraphs(){
+
+    cout << "|-----------------------------------------------------------|\n";
+    cout << "|                                                           |\n";
+
+    while (true){
+        string choice;
+        cout << "\n|=========================== Toy Graphs ===========================|\n";
+        cout << "|                                                                   |\n";
+        cout << "| 1 - Shipping                                                      |\n";
+        cout << "| 2 - Stadiums                                                      |\n";
+        cout << "| 3 - Tourism                                                       |\n";
+        cout << "| r - Return to the previous page                                   |\n";
+        cout << "| q - Quit the program                                              |\n";
+        cout << "|                                                                   |\n";
+        cout << "| Enter your choice: ";
+        getline(cin, choice);
+        cout << "|                                                                   |\n";
+
+        if(choice == "1") {
+            graph.clearNodes();
+            graph.readToyGraph("../data/Toy-Graphs/Toy-Graphs/shipping.csv");
+            graph_loaded = 1;
+            break;
         }
 
-        else if(backtrackingChoice == "2"){
-            algorithmDescription(1);
+
+        else if(choice == "2"){
+            graph.clearNodes();
+            graph.readToyGraph("../data/Toy-Graphs/Toy-Graphs/stadiums.csv");
+            graph_loaded = 1;
+            break;
         }
 
-        else if(backtrackingChoice == "r"){
-            returnMessage();
+        else if(choice == "3"){
+            graph.clearNodes();
+            graph.readToyGraph("../data/Toy-Graphs/Toy-Graphs/tourism.csv");
+            graph_loaded = 1;
+            break;
+        }
+
+        else if(choice == "r"){
+            returnMenu();
             return true;
         }
 
-        else if(backtrackingChoice == "q"){
-            quitMessage();
+        else if(choice == "q"){
+            quit();
             return false;
         }
 
         else{
             cout << "| Invalid selection. Please enter a valid option.          |\n";
             cout << "|                                                           |\n";
-            cout << "| Select one of the options bellow:                         \n";
+            cout << "| Try again: ";
         }
     }
+    graphLoaded();
+    returnMenu();
+    return true;
 }
+
+/*
+ * --------------------------------- *
+ */
+
+
+
+/*
+ * -----------EXTENDED GRAPHS MENU----------- *
+ */
+
+
+bool Menu::extendedGraphs() {
+    while (true){
+        string choice;
+        cout << "\n|========================== Extended Graphs ========================|\n";
+        cout << "|                                                                   |\n";
+        cout << "| Choose the number of edges to use from the following ranges:      |\n";
+        cout << "|   | 25 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 |\n";
+        cout << "|                                                                   |\n";
+        cout << "| r - Return to the previous page                                   |\n";
+        cout << "| q - Quit the program                                              |\n";
+        cout << "|                                                                   |\n";
+        cout << "| Enter your value: ";
+        getline(cin, choice);
+        cout << "|                                                                   |\n";
+
+        int choiceNum;
+        try {
+            choiceNum = stoi(choice);
+        } catch (const invalid_argument& e) {
+            cout << "| Invalid selection. Please enter a valid option.          |\n";
+            cout << "|                                                           |\n";
+            cout << "| Try again: ";
+            continue;
+        }
+
+        if ((choiceNum >= 100 && choiceNum <= 900 && choiceNum % 100 == 0) || choiceNum == 25 || choiceNum == 50) {
+            graph.clearNodes();
+            graph.readExtraGraphs("../data/Extra_Fully_Connected_Graphs/Extra_Fully_Connected_Graphs/edges_" + choice + ".csv");
+            graph_loaded = 2;
+            break;
+        }
+
+        else if(choice == "r"){
+            returnMenu();
+            return true;
+        }
+
+        else if(choice == "q"){
+            quit();
+            return false;
+        }
+
+        else{
+            cout << "| Invalid selection. Please enter a valid option.          |\n";
+            cout << "|                                                           |\n";
+            cout << "| Try again: ";
+        }
+    }
+    graphLoaded();
+    returnMenu();
+    return true;
+}
+
+/*
+ * --------------------------------- *
+ */
+
+
+
+/*
+ * -----------REAL WORLD GRAPHS MENU----------- *
+ */
+
+bool Menu::realWorldGraphs() {
+
+    cout << "\n|============================= WARNING =============================|\n";
+    cout << "| Dense graph creation times may vary:                             |\n";
+    cout << "| - Graph 1 may take several seconds.                              |\n";
+    cout << "| - Graph 3 may require several minutes. Consider this before you  |\n";
+    cout << "|   proceed!                                                       |\n";
+    cout << "|===================================================================|\n";
+
+    while (true){
+        string choice;
+        cout << "\n|========================= Real World Graphs =======================|\n";
+        cout << "|                                                                   |\n";
+        cout << "| 1 - Graph 1 (1000 nodes)                                          |\n";
+        cout << "| 2 - Graph 2 (5000 nodes)                                          |\n";
+        cout << "| 3 - Graph 3 (10000 nodes)                                         |\n";
+        cout << "| r - Return to the previous page                                   |\n";
+        cout << "| q - Quit the program                                              |\n";
+        cout << "|                                                                   |\n";
+        cout << "| Enter your choice: ";
+        getline(cin, choice);
+        cout << "|                                                                   |\n";
+
+        if(choice == "1") {
+            graph.clearNodes();
+            graph.readRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph1/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph1/edges.csv");
+            graph_loaded = 3;
+            break;
+        }
+
+
+        else if(choice == "2"){
+            graph.clearNodes();
+            graph.readRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph2/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph2/edges.csv");
+            graph_loaded = 3;
+            break;
+        }
+
+        else if(choice == "3"){
+            graph.clearNodes();
+            graph.readRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph3/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph3/edges.csv");
+            graph_loaded = 3;
+            break;
+        }
+
+        else if(choice == "r"){
+            returnMenu();
+            return true;
+        }
+
+        else if(choice == "q"){
+            quit();
+            return false;
+        }
+
+        else{
+            cout << "| Invalid selection. Please enter a valid option.          |\n";
+            cout << "|                                                           |\n";
+            cout << "| Try again: ";
+        }
+    }
+    graphLoaded();
+    returnMenu();
+    return true;
+}
+
+/*
+ * --------------------------------- *
+ */
+
+
+
+
+/*
+ * -----------ALGORITHMS' DESCRIPTION MENU----------- *
+ */
 
 void Menu::algorithmDescription(int menu) {
     if (menu == 1) {
@@ -528,42 +452,50 @@ void Menu::algorithmDescription(int menu) {
     }
 }
 
-// TO-DO : 4.1. Backtracking Algorithm
-// void Menu::backtrackingAlgorithm() {}
+/*
+ * --------------------------------- *
+ */
 
-bool Menu::startTriApproxMenu() {
-    if(!verifyLoadedGraph()) return true;
 
-    string triAproxChoice;
 
-    cout << "\n|================= Triangular Approximation Heuristic Menu =====================|\n";
 
-    while(true){
-        cout << "|                                                           |\n";
+/*
+ * -----------BACKTRACKING MENU----------- *
+ */
+
+bool Menu::BacktrackingMenu() {
+    if(!verifyGraphTypeBacktracking()) return true;
+
+    string backtrackingChoice;
+
+    cout << "\n|================= Backtracking Menu =====================|\n";
+    cout << "|                                                         |\n";
+
+    while (true) {
         cout << "| 1 - Execute Algorithm                                   |\n";
         cout << "| 2 - Algorithm Details                                   |\n";
         cout << "| r - Return to Main Menu                                 |\n";
         cout << "| q - Exit Program                                        |\n";
         cout << "|                                                         |\n";
         cout << "| Select an option: ";
-        getline(cin, triAproxChoice);
-        cout << "|                                                           |\n";
+        getline(cin, backtrackingChoice);
+        cout << "|                                                         |\n";
 
-        if(triAproxChoice == "1"){
-            // triApproxAlgorithm();
+        if(backtrackingChoice == "1"){
+            // backtrackingAlgorithm();
         }
 
-        else if(triAproxChoice == "2"){
-            algorithmDescription(2);
+        else if(backtrackingChoice == "2"){
+            algorithmDescription(1);
         }
 
-        else if(triAproxChoice == "r"){
-            returnMessage();
+        else if(backtrackingChoice == "r"){
+            returnMenu();
             return true;
         }
 
-        else if(triAproxChoice == "q"){
-            quitMessage();
+        else if(backtrackingChoice == "q"){
+            quit();
             return false;
         }
 
@@ -575,20 +507,121 @@ bool Menu::startTriApproxMenu() {
     }
 }
 
+// TO-DO : 4.1. Backtracking Algorithm
+// void Menu::backtrackingAlgorithm() {}
+
+/*
+ * --------------------------------- *
+ */
+
+
+
+
+/*
+ * -----------TRIANGULAR APPROXIMATION MENU----------- *
+ */
+
+
+bool Menu::TriApproxMenu() {
+    if (!verifyLoadedGraph()) return true;
+
+    string triAproxChoice;
+
+    cout << "\n|================= Triangular Approximation Heuristic Menu =====================|\n";
+
+    while (true) {
+        cout << "                                                           \n";
+        cout << "| 1 - Execute Algorithm                                   |\n";
+        cout << "| 2 - Algorithm Details                                   |\n";
+        cout << "| r - Return to Main Menu                                 |\n";
+        cout << "| q - Exit Program                                        |\n";
+        cout << "|                                                         |\n";
+        cout << "| Select an option: ";
+        getline(cin, triAproxChoice);
+        cout << "                                                           \n";
+
+        if (triAproxChoice == "1") {
+            vector<int> path;
+            auto start = chrono::high_resolution_clock::now();
+            double totalDistance = Algorithms::triangularApproximationHeuristic(graph, path);
+            auto end = chrono::high_resolution_clock::now();
+            chrono::duration<double> elapsed = end - start;
+
+            cout << " The approximate distance is " << totalDistance << " meters";
+            for(int i = 0; i < 59 - 40; i++){
+                cout << " ";
+            }
+            cout << "\n";
+
+            cout << " Total time elapsed: " << elapsed.count() << " seconds";
+            for(int i = 0; i < 59 - 29 - to_string(elapsed.count()).length(); i++){
+                cout << " ";
+            }
+            int charCounter = 1;
+            cout << "                                                           \n";
+            cout << " The path is:                                              \n";
+            cout << " ";
+            for (size_t i = 0; i < path.size(); ++i) {
+                charCounter += (4 + to_string(path[i]).length());
+                if (charCounter > 58) {
+                    for (int j = 0; j < 59 - charCounter + to_string(path[i]).length() + 4; ++j) {
+                        cout << " ";
+                    }
+                    cout << "\n";
+                    cout << " ";
+                    charCounter = (1 + 4 + to_string(path[i]).length());
+                }
+                if (i == path.size() - 1) {
+                    cout << path[i];
+                    charCounter -= 4;
+                } else {
+                    cout << path[i] << " -> ";
+                }
+            }
+            cout << "\n";
+        } else if (triAproxChoice == "2") {
+            algorithmDescription(2);
+        } else if (triAproxChoice == "r") {
+            returnMenu();
+            return true;
+        } else if (triAproxChoice == "q") {
+            quit();
+            return false;
+        } else {
+            cout << "| Invalid selection. Please enter a valid option.          |\n";
+            cout << "|                                                           |\n";
+            cout << "| Select one of the options below:                          |\n";
+        }
+    }
+}
+
+
+
 // TO-DO : 4.2. Triangular Approximation Heuristic
 // void Menu::triApproxAlgorithm() {}
 
+/*
+ * --------------------------------- *
+ */
+
+
+
+
+/*
+ * -----------OTHER HEURISTICS MENU----------- *
+ */
+
 // TO-DO : 4.3.Other Heuristics
-bool Menu::startOtherHeuristicsMenu() {
+bool Menu::OtherHeuristicsMenu() {
     if(!verifyLoadedGraph()) return true;
 
     string otherHeuristicsChoice;
 
-    cout << "\n|================= Other Heuristics Menu =====================|\n";
-    cout << "|                                                           |\n";
+      cout << "\n|=============== Other Heuristics Menu ===================|\n";
+        cout << "|                                                         |\n";
     while(true){
-        cout << "|                                                           |\n";
-        cout << "| 1 - Execute Algorithm                                   |\n";
+        cout << "|                                                         |\n";
+        cout << "| 1 - Execute Nearest Neighbor Heuristic                  |\n";
         cout << "| 2 - Algorithm Details                                   |\n";
         cout << "| r - Return to Main Menu                                 |\n";
         cout << "| q - Exit Program                                        |\n";
@@ -598,22 +631,20 @@ bool Menu::startOtherHeuristicsMenu() {
         cout << "|                                                           |\n";
 
         if(otherHeuristicsChoice == "1"){
-            // ourHeuristicsAlgorithm();
+            otherHeuristicsAlgorithm();
         }
-
-        // ...
 
         else if(otherHeuristicsChoice == "2"){
             algorithmDescription(3);
         }
 
         else if(otherHeuristicsChoice == "r"){
-            returnMessage();
+            returnMenu();
             return true;
         }
 
         else if(otherHeuristicsChoice == "q"){
-            quitMessage();
+            quit();
             return false;
         }
 
@@ -625,9 +656,37 @@ bool Menu::startOtherHeuristicsMenu() {
     }
 }
 
-// void Menu::ourHeuristicsAlgorithm() {}
+void Menu::otherHeuristicsAlgorithm() {
+    vector<int> path;
+    auto start = std::chrono::high_resolution_clock::now();
+    double distance = Algorithms::nearestNeighborHeuristic(graph, path);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = duration_cast<std::chrono::milliseconds>(end - start).count();
 
-bool Menu::startTSPRealWorldMenu() {
+    cout << "\n|================= Nearest Neighbor Heuristic =================|\n";
+    cout << "| Total distance: " << distance << " meters                      |\n";
+    cout << "| Time elapsed: " << duration << " ms                             |\n";
+    cout << "| Path: ";
+    for (size_t i = 0; i < path.size(); ++i) {
+        if (i > 0) cout << " -> ";
+        cout << path[i];
+    }
+    cout << " |\n";
+    cout << "|============================================================|\n";
+}
+
+/*
+ * --------------------------------- *
+ */
+
+
+
+/*
+ * -----------TSP REAL WORLD MENU----------- *
+ */
+
+
+bool Menu::TSPRealWorldMenu() {
     if(!verifyLoadedGraph()) return true;
 
     string TSPRealWorldChoice;
@@ -656,12 +715,12 @@ bool Menu::startTSPRealWorldMenu() {
         }
 
         else if(TSPRealWorldChoice == "r"){
-            returnMessage();
+            returnMenu();
             return true;
         }
 
         else if(TSPRealWorldChoice == "q"){
-            quitMessage();
+            quit();
             return false;
         }
 
@@ -670,5 +729,100 @@ bool Menu::startTSPRealWorldMenu() {
             cout << "|                                                           |\n";
             cout << "| Select one of the options bellow:                         \n";
         }
+    }
+}
+
+/*
+ * --------------------------------- *
+ */
+
+
+
+/*
+ * -----------MESSAGES MENUS----------- *
+ */
+
+bool Menu::messageLoop() {
+    string helpChoice;
+    while (true) {
+        getline(cin, helpChoice);
+        cout << "|                                                           |\n";
+
+        if (helpChoice == "back") {
+            returnMenu();
+            return false;
+        } else if (helpChoice == "stay"){
+            return true;
+
+        } else {
+            cout << "| Invalid selection. Please enter a valid option.          |\n";
+            cout << "|                                                           |\n";
+            cout << "| Try again: ";
+        }
+    }
+}
+
+void Menu::helpMenu() {
+    cout << "\n|===================== Help Overview =====================|\n";
+    cout << "|                                                         |\n";
+    cout << "| 1 - Load Graph: Allows you to import graph data from a  |\n";
+    cout << "|     file. Available types: Toy Graphs, Fully-Connected  |\n";
+    cout << "|     Graphs, and Real-World Graphs.                      |\n";
+    cout << "| 2 - Backtracking Algorithm: Executes a complete search  |\n";
+    cout << "|     to identify the shortest possible tour through all  |\n";
+    cout << "|     nodes.                                              |\n";
+    cout << "| 3 - Triangular Heuristic: Uses the triangular           |\n";
+    cout << "|     inequality to estimate a near-optimal path with     |\n";
+    cout << "|     improved efficiency.                                |\n";
+    cout << "| 4 - Other Heuristics: Explore additional heuristic      |\n";
+    cout << "|     strategies developed by our team to find efficient  |\n";
+    cout << "|     routes across the graphs.                           |\n";
+    cout << "|                                                         |\n";
+    cout << "| Usage Tips: Start by loading a graph to set up the      |\n";
+    cout << "|     environment. Subsequently, you can execute the      |\n";
+    cout << "|     algorithms to discover the shortest routes.         |\n";
+    cout << "|                                                         |\n";
+    cout << "|=========================================================|\n";
+    cout << "|                                                         |\n";
+}
+
+
+void Menu::returnMenu() {
+    cout << "\n|=========================================================|\n";
+    cout << "|                                                         |\n";
+    cout << "| Ready to navigate? Choose an option to proceed.         |\n";
+    cout << "|                                                         |\n";
+    cout << "|=========================================================|\n";
+}
+
+void Menu::quit() {
+    cout << "\n|=========================================================|\n";
+    cout << "|                                                         |\n";
+    cout << "| It's been a pleasure helping you navigate.              |\n";
+    cout << "| Thank you for using TSP Explorer!                       |\n";
+    cout << "| Have a great day!                                       |\n";
+    cout << "|                                                         |\n";
+    cout << "|=========================================================|\n";
+}
+
+/*
+ * -----------HELP MENU----------- *
+ */
+
+void Menu::helpLoadMenu() {
+    bool running = true;
+    while(running) {
+        string helpChoice;
+
+        cout << "\n|======================= Help: Graph Loading ======================|\n";
+        cout << "|                                                                   |\n";
+        cout << "| 1 - Toy Graph: Load small-scale graphs ideal for initial testing. |\n";
+        cout << "| 2 - Fully Connected Graph: Load larger, fully connected graphs.   |\n";
+        cout << "| 3 - Real World Graph: Load graphs simulating real-world scenarios.|\n";
+        cout << "|                                                                   |\n";
+        cout << "| Type 'back' to return to the previous menu                        |\n";
+        cout << "| Enter your choice: ";
+        running = messageLoop();
+        cout << "|                                                                   |\n";
     }
 }

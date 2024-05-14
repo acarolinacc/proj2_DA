@@ -5,35 +5,32 @@
 #include <unordered_map>
 #include <string>
 
-struct Node {
-    int index;
-    double latitude, longitude;
-    Node(int idx, double lat = 0.0, double lon = 0.0) : index(idx), latitude(lat), longitude(lon) {}
-};
-
-struct Edge {
-    int dest;
-    double weight;
-    Edge(int d, double w) : dest(d), weight(w) {}
-};
+#include "Node.h"
+#include "Edge.h"
 
 class Graph {
 public:
     Graph();
     ~Graph();
 
-    int createRealWorldGraph(const std::string& nodesFilePath, const std::string& edgesFilePath);
-    int createExtraGraphs(const std::string& edgesFilePath);
-    int createToyGraph(const std::string& filePath);
+    int readRealWorldGraph(const std::string& nodesFilePath, const std::string& edgesFilePath);
+    int readExtraGraphs(const std::string& edgesFilePath);
+    int readToyGraph(const std::string& filePath);
 
     void addNode(int index, double latitude, double longitude);
+    void addNode(int index);
     void addBidirectionalEdge(int srcIndex, int destIndex, double weight);
-    Node* findNode(int index);
+    Node * findNode(int index) const;
     void displayGraph();
     void clearNodes();
+    std::unordered_map<int, Node*> getNodes() const;
+
+
+    // Haversine distance calculation
+    double calculateHaversineDistance(double lat1, double lon1, double lat2, double lon2);
 
 private:
-    std::unordered_map<int, std::vector<Edge>> adjacencyList;
+    std::unordered_map<int, std::vector<Edge*>> adjacencyList;
     std::unordered_map<int, Node*> nodes;
 };
 
