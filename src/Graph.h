@@ -4,6 +4,7 @@
 #include <vector>
 #include <unordered_map>
 #include <string>
+#include <unordered_set>
 
 struct Node {
     int index;
@@ -28,9 +29,13 @@ public:
 
     void addNode(int index, double latitude, double longitude);
     void addBidirectionalEdge(int srcIndex, int destIndex, double weight);
+    void addDirectionalEdge(int srcIndex, int destIndex, double weight);
     Node* findNode(int index);
     void displayGraph();
     void clearNodes();
+
+    std::unordered_map<int, std::vector<Edge>> getEdges();
+    std::unordered_map<int, Node*> getNodes();
 
 private:
     std::unordered_map<int, std::vector<Edge>> adjacencyList;

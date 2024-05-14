@@ -64,7 +64,13 @@ public:
 
     bool startOtherHeuristicsMenu();
 
+    /*
+     * -----------Real World Menu----------- *
+     */
     bool startTSPRealWorldMenu();
+
+    bool SelectionRealWorldNodeIndex();
+    bool RealWorldCase(int StartIndexNode, Graph& Real);
 
 };
 

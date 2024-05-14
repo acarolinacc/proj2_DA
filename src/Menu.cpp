@@ -355,7 +355,7 @@ bool Menu::realWorldGraphs() {
         if(choice == "1") {
             graph.clearNodes();
             graph.createRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph1/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph1/edges.csv");
-            graph_loaded = 3;
+            graph_loaded = 31;
             break;
         }
 
@@ -363,14 +363,14 @@ bool Menu::realWorldGraphs() {
         else if(choice == "2"){
             graph.clearNodes();
             graph.createRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph2/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph2/edges.csv");
-            graph_loaded = 3;
+            graph_loaded = 32;
             break;
         }
 
         else if(choice == "3"){
             graph.clearNodes();
             graph.createRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph3/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph3/edges.csv");
-            graph_loaded = 3;
+            graph_loaded = 33;
             break;
         }
 
@@ -429,7 +429,7 @@ bool Menu::verifyGraphTypeBacktracking() {
         cout << "|                                                         |\n";
         cout << "|=========================================================|\n\n";
         return false;
-    } else if (graph_loaded == 3) {
+    } else if (graph_loaded == 31 || graph_loaded ==  32 || graph_loaded ==  33) {
         cout << "\n|==================== Real-World Warning ==================|\n";
         cout << "|                                                         |\n";
         cout << "|  A real-world graph is currently loaded. This type of   |\n";
@@ -520,8 +520,9 @@ void Menu::algorithmDescription(int menu) {
     else if(menu == 3){
         cout << "\n|================ Algorithm Description ==================|\n";
         cout << "|                                                           |\n";
-        // Colocar aqui a descrição das nossas heuristics
-        cout << "|                                                           |\n";
+        cout << "|   The Real World Heuristic uses an DFS to check if there  |\n";
+        cout << "|   is a path which travels along all the nodes, if such    |\n";
+        cout << "|   exists then it will calculate the fastest way of doing. |\n";
         cout << "|=========================================================|\n\n";
         cout << "|                                                           |\n";
         cout << "\n|================= Other Heuristics Menu =====================|\n";
@@ -648,7 +649,7 @@ bool Menu::startTSPRealWorldMenu() {
         cout << "|                                                           |\n";
 
         if(TSPRealWorldChoice == "1"){
-            // ourHeuristicsAlgorithm();
+            SelectionRealWorldNodeIndex();
         }
 
         else if(TSPRealWorldChoice == "2"){
@@ -666,6 +667,63 @@ bool Menu::startTSPRealWorldMenu() {
         }
 
         else{
+            cout << "| Invalid selection. Please enter a valid option.          |\n";
+            cout << "|                                                           |\n";
+            cout << "| Select one of the options bellow:                         \n";
+        }
+    }
+}
+
+bool Menu::SelectionRealWorldNodeIndex() {
+    if(!verifyLoadedGraph()) return true;
+
+    string TSPRealWorldChoice;
+
+    cout << "\n|================= TSP in the Real World Menu =====================|\n";
+    cout << "|                                                                  |\n";
+    while(true) {
+        cout << "| Graph 1 (0 -> 999)                                               |\n";
+        cout << "| Graph 2 (0 -> 4999)                                              |\n";
+        cout << "| Graph 3 (0 -> 9999)                                              |\n";
+        cout << "| Shipping (0 -> 13)                                               |\n";
+        cout << "| r - Return to Main Menu                                          |\n";
+        cout << "| q - Exit Program                                                 |\n";
+        cout << "|                                                                  |\n";
+        cout << "| Please select a number according to the graph loaded             |\n";
+        cout << "| Select an option: ";
+        getline(cin, TSPRealWorldChoice);
+        cout << "|                                                                  |\n";
+
+        //Caso Graph 1
+        if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 999 && graph_loaded == 31) {
+            RealWorldCase(stoi(TSPRealWorldChoice), graph);
+            return true;
+        }
+        //Caso Graph 2
+        if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 4999 && graph_loaded == 32) {
+            RealWorldCase(stoi(TSPRealWorldChoice), graph);
+            return true;
+        }
+        //Caso Graph 3
+        if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 9999 && graph_loaded == 33) {
+            RealWorldCase(stoi(TSPRealWorldChoice), graph);
+            return true;
+        }
+        //Caso Shipping
+        if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 13 && graph_loaded == 1) {
+            RealWorldCase(stoi(TSPRealWorldChoice), graph);
+            return true;
+        }
+
+        if (TSPRealWorldChoice == "r") {
+            returnMessage();
+            return true;
+        }
+
+        if (TSPRealWorldChoice == "q") {
+            quitMessage();
+            return false;
+        } else {
             cout << "| Invalid selection. Please enter a valid option.          |\n";
             cout << "|                                                           |\n";
             cout << "| Select one of the options bellow:                         \n";

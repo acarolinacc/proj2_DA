@@ -29,6 +29,14 @@ void Graph::addBidirectionalEdge(int srcIndex, int destIndex, double weight) {
     adjacencyList[destIndex].emplace_back(srcIndex, weight);
 }
 
+void Graph::addDirectionalEdge(int srcIndex, int destIndex, double weight) {
+    if (nodes.find(srcIndex) == nodes.end() || nodes.find(destIndex) == nodes.end()) {
+        cerr << "Error: Node not found, cannot add edge." << endl;
+        return;
+    }
+    adjacencyList[srcIndex].emplace_back(destIndex, weight);
+}
+
 Node* Graph::findNode(int index) {
     auto it = nodes.find(index);
     return it != nodes.end() ? it->second : nullptr;
@@ -105,7 +113,7 @@ int Graph::createToyGraph(const string& filePath) {
             addNode(dst);
         }
 
-        addBidirectionalEdge(src, dst, dist);
+        addDirectionalEdge(src, dst, dist);
     }
 
     file.close();
@@ -161,3 +169,10 @@ void Graph::clearNodes() {
     nodes.clear();
 }
 
+std::unordered_map<int, Node *> Graph::getNodes() {
+    return nodes;
+}
+
+std::unordered_map<int, std::vector<Edge>> Graph::getEdges() {
+    return adjacencyList;
+}
