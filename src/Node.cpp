@@ -76,3 +76,12 @@ void Node::addIncomingEdge(Edge* edge) {
 bool Node::operator<(const Node& other) const {
     return distance < other.distance;
 }
+
+Edge* Node::findEdgeTo(Node* destination) {
+    for (Edge* edge : adjacencies) {
+        if (edge->getDestination() == destination) {
+            return edge;
+        }
+    }
+    return nullptr;
+}

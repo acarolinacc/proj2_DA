@@ -17,6 +17,12 @@ public:
 
 private:
     static double toRadians(double degree);
+
+    std::set<Edge *> duplicateEdges(const std::set<Edge *> &mst);
+
+    std::vector<int> generateEulerCircuit(const std::set<Edge *> &doubledMst, Node *startNode);
+
+    std::vector<int> createHamiltonianPath(const std::vector<int> &eulerCircuit);
 };
 
 #endif // ALGORITHMS_H

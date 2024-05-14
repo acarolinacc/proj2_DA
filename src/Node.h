@@ -36,6 +36,8 @@ public:
         queueIndex = index;
     }
     int queueIndex;
+    Edge *findEdgeTo(Node *destination);
+
 
 private:
     int index;

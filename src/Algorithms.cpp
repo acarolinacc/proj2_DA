@@ -19,6 +19,7 @@ struct NodeDistance {
     }
 };
 
+
 /*
  * -----------Triangular Approximation Heuristic----------- *
  */
@@ -116,51 +117,56 @@ double Algorithms::calculateHaversineDistance(double lat1, double lon1, double l
 
 double Algorithms::triangularApproximationHeuristic(Graph graph, vector<int>& path) {
     set<Edge*> mst = prim(graph);
-    unordered_set<Node*> visited;
-    double totalDistance = 0.0;
-
     if (mst.empty() || mst.size() != graph.getNodes().size() - 1) {
         cerr << "Error: Minimum Spanning Tree not properly constructed." << endl;
         return -1.0;
     }
 
-    auto startEdge = *mst.begin();
-    Node* startNode = startEdge->getSource();
+    // duplica arestas
+    unordered_map<Node*, vector<Node*>> adjList;
+    for (Edge* edge : mst) {
+        adjList[edge->getSource()].push_back(edge->getDestination());
+        adjList[edge->getDestination()].push_back(edge->getSource());
+    }
 
+    vector<int> eulerCircuit;
+    unordered_set<Node*> visited;
     function<void(Node*)> dfs = [&](Node* node) {
         visited.insert(node);
-        path.push_back(node->getId());
-
-        cout << "Visiting node: " << node->getId() << endl;
-
-        for (Edge* edge : node->getAdjacencies()) {
-            Node* neighbor = edge->getDestination();
+        eulerCircuit.push_back(node->getId());
+        for (Node* neighbor : adjList[node]) {
             if (visited.find(neighbor) == visited.end()) {
-                totalDistance += edge->getDistance();
-                cout << "Edge: " << node->getId() << " -> " << neighbor->getId() << ", Distance: " << edge->getDistance() << endl;
                 dfs(neighbor);
             }
         }
     };
+    dfs(adjList.begin()->first);
 
-    dfs(startNode);
-    path.push_back(startNode->getId());
+    unordered_set<int> visitedNodes;
+    vector<int> tempPath;
+    for (int nodeId : eulerCircuit) {
+        if (visitedNodes.insert(nodeId).second) {
+            tempPath.push_back(nodeId);
+        }
+    }
+    if (!tempPath.empty() && tempPath.front() != 0) {
+        auto it = find(tempPath.begin(), tempPath.end(), 0);
+        std::rotate(tempPath.begin(), it, tempPath.end());
+        tempPath.push_back(0);
+    }
+    path = tempPath;
 
+    // distância total para o caminho Hamiltoniano
+    double totalDistance = 0.0;
     for (size_t i = 0; i < path.size() - 1; ++i) {
         Node* currentNode = graph.findNode(path[i]);
-        Node* nextNode = graph.findNode(path[i + 1]);
-        if (!currentNode || !nextNode) continue;
-
-        double distance = calculateHaversineDistance(
+        Node* nextNode = graph.findNode(path[i+1]);
+        Edge* edge = currentNode->findEdgeTo(nextNode);
+        double distance = edge ? edge->getDistance() : calculateHaversineDistance(
                 currentNode->getLatitude(), currentNode->getLongitude(),
-                nextNode->getLatitude(), nextNode->getLongitude()
-        );
-
+                nextNode->getLatitude(), nextNode->getLongitude());
         totalDistance += distance;
-        cout << "Edge: " << currentNode->getId() << " -> " << nextNode->getId() << ", Distance: " << distance << endl;
     }
-
-    cout << "Total distance: " << totalDistance << endl;
 
     return totalDistance;
 }
