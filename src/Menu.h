@@ -14,6 +14,7 @@
 class Menu {
 protected:
     Graph graph;
+    Algorithms algorithms;
     int graph_loaded;
 public:
     explicit Menu(const Graph &graph, const int &graph_loaded);
@@ -66,9 +67,14 @@ public:
 
     bool OtherHeuristicsMenu();
 
+    /*
+     * -----------TSPRealWorld----------- *
+     */
     bool TSPRealWorldMenu();
 
-    bool RealWorldCase(int StartIndexNode, Graph& Real);
+    bool RealWorldCase(int StartIndexNode, Graph& Real, Algorithms& algorithms) ;
+
+    bool SelectionRealWorldNodeIndex();
 
 };
 
