@@ -1,0 +1,83 @@
+\doxysection{Node Class Reference}
+\hypertarget{class_node}{}\label{class_node}\index{Node@{Node}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_node_a1c4bd7375b3de34d3457c41deb74441f}\label{class_node_a1c4bd7375b3de34d3457c41deb74441f} 
+{\bfseries Node} (int idx, double lat=0.\+0, double lon=0.\+0)
+\item 
+\Hypertarget{class_node_a1d20626e520e49234bb3a1a0674bc5dc}\label{class_node_a1d20626e520e49234bb3a1a0674bc5dc} 
+{\bfseries Node} (int idx)
+\item 
+\Hypertarget{class_node_af761aaef36a761a90c4f148a6add914d}\label{class_node_af761aaef36a761a90c4f148a6add914d} 
+void {\bfseries add\+Edge} (\mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*}edge)
+\item 
+\Hypertarget{class_node_a9bfe1d3a76fb2dff18b9cdf508287d93}\label{class_node_a9bfe1d3a76fb2dff18b9cdf508287d93} 
+void {\bfseries remove\+Edge} (\mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*}edge)
+\item 
+\Hypertarget{class_node_a04d6761bf0ead66eb628a6ef5abc34e1}\label{class_node_a04d6761bf0ead66eb628a6ef5abc34e1} 
+int {\bfseries get\+Id} () const
+\item 
+\Hypertarget{class_node_a6c056b2c055f60bdf7347b50ccafddbf}\label{class_node_a6c056b2c055f60bdf7347b50ccafddbf} 
+const std\+::vector$<$ \mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ \& {\bfseries get\+Adjacencies} () const
+\item 
+\Hypertarget{class_node_a6a76240688eddc8a2942618074e28c92}\label{class_node_a6a76240688eddc8a2942618074e28c92} 
+double {\bfseries get\+Latitude} () const
+\item 
+\Hypertarget{class_node_ad4a79ebbcca46dae4638ffbe4d732399}\label{class_node_ad4a79ebbcca46dae4638ffbe4d732399} 
+double {\bfseries get\+Longitude} () const
+\item 
+\Hypertarget{class_node_a97dd8f95e09a0516f8939627f94bd58e}\label{class_node_a97dd8f95e09a0516f8939627f94bd58e} 
+bool {\bfseries is\+Visited} () const
+\item 
+\Hypertarget{class_node_a6fe3ebcd0eaf9fece72dfbc0ffc257bb}\label{class_node_a6fe3ebcd0eaf9fece72dfbc0ffc257bb} 
+void {\bfseries set\+Visited} (bool visited)
+\item 
+\Hypertarget{class_node_aac8835a020aafb6196ce9f871a270272}\label{class_node_aac8835a020aafb6196ce9f871a270272} 
+double {\bfseries get\+Distance} () const
+\item 
+\Hypertarget{class_node_a734e6d1a1ae8c695c9c535049c91af77}\label{class_node_a734e6d1a1ae8c695c9c535049c91af77} 
+void {\bfseries set\+Distance} (double distance)
+\item 
+\Hypertarget{class_node_aa65cdeade5f183eea5b8642b9a37acbe}\label{class_node_aa65cdeade5f183eea5b8642b9a37acbe} 
+\mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*} {\bfseries get\+Path} () const
+\item 
+\Hypertarget{class_node_a6db8e0dd804c742289b097bde02449b8}\label{class_node_a6db8e0dd804c742289b097bde02449b8} 
+void {\bfseries set\+Path} (\mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*}edge)
+\item 
+\Hypertarget{class_node_a4acb89359958e73b87cb5133bdee0b37}\label{class_node_a4acb89359958e73b87cb5133bdee0b37} 
+void {\bfseries increment\+MSTDegree} ()
+\item 
+\Hypertarget{class_node_adf161b8bf12f761db640dbe29fd08256}\label{class_node_adf161b8bf12f761db640dbe29fd08256} 
+int {\bfseries get\+MSTDegree} () const
+\item 
+\Hypertarget{class_node_a16ea4457be1bee28477d90510e63781a}\label{class_node_a16ea4457be1bee28477d90510e63781a} 
+const std\+::vector$<$ \mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ \& {\bfseries get\+Incoming\+Edges} () const
+\item 
+\Hypertarget{class_node_aab09e958adda03eb3c53aa02ad87212e}\label{class_node_aab09e958adda03eb3c53aa02ad87212e} 
+void {\bfseries add\+Incoming\+Edge} (\mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*}edge)
+\item 
+\Hypertarget{class_node_acbf4c424e4e58ae45491583204bd80ce}\label{class_node_acbf4c424e4e58ae45491583204bd80ce} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{class_node}{Node}} \&other) const
+\item 
+\Hypertarget{class_node_a51bb51e24bc8e8ca1458f1893b403dbd}\label{class_node_a51bb51e24bc8e8ca1458f1893b403dbd} 
+int {\bfseries get\+Queue\+Index} () const
+\item 
+\Hypertarget{class_node_aaaf119b37f9d806fa5f3273b90edd630}\label{class_node_aaaf119b37f9d806fa5f3273b90edd630} 
+void {\bfseries set\+Queue\+Index} (int index)
+\item 
+\Hypertarget{class_node_a22fb0603c649acb9156021c2c5ccf6c6}\label{class_node_a22fb0603c649acb9156021c2c5ccf6c6} 
+\mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*} {\bfseries find\+Edge\+To} (\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}destination)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_node_a01788c18aef94f986ec563e8233365c1}\label{class_node_a01788c18aef94f986ec563e8233365c1} 
+int {\bfseries queue\+Index}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Utilizador/\+One\+Drive/\+Documentos/\+Code/\+CLion-\/stuff/\+DA/\+Project2/proj2\+\_\+\+DA/src/Node.\+h\item 
+C\+:/\+Users/\+Utilizador/\+One\+Drive/\+Documentos/\+Code/\+CLion-\/stuff/\+DA/\+Project2/proj2\+\_\+\+DA/src/Node.\+cpp\end{DoxyCompactItemize}

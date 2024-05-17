@@ -1,0 +1,43 @@
+\doxysection{Graph.\+h}
+\hypertarget{_graph_8h_source}{}\label{_graph_8h_source}\index{C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-\/stuff/DA/Project2/proj2\_DA/src/Graph.h@{C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-\/stuff/DA/Project2/proj2\_DA/src/Graph.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRAPH\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GRAPH\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Node.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Edge.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graph}{Graph}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_graph}{Graph}}();}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_graph}{\string~Graph}}();}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ readRealWorldGraph(\textcolor{keyword}{const}\ std::string\&\ nodesFilePath,\ \textcolor{keyword}{const}\ std::string\&\ edgesFilePath);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ readExtraGraphs(\textcolor{keyword}{const}\ std::string\&\ edgesFilePath);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ readToyGraph(\textcolor{keyword}{const}\ std::string\&\ filePath);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ addNode(\textcolor{keywordtype}{int}\ index,\ \textcolor{keywordtype}{double}\ latitude,\ \textcolor{keywordtype}{double}\ longitude);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ addNode(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ addBidirectionalEdge(\textcolor{keywordtype}{int}\ srcIndex,\ \textcolor{keywordtype}{int}\ destIndex,\ \textcolor{keywordtype}{double}\ weight);}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ *\ findNode(\textcolor{keywordtype}{int}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ displayGraph();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ clearNodes();}
+\DoxyCodeLine{00026\ \ \ \ \ std::unordered\_map<int,\ Node*>\ getNodes()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Haversine\ distance\ calculation}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ calculateHaversineDistance(\textcolor{keywordtype}{double}\ lat1,\ \textcolor{keywordtype}{double}\ lon1,\ \textcolor{keywordtype}{double}\ lat2,\ \textcolor{keywordtype}{double}\ lon2);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \ \ std::unordered\_map<int,\ std::vector<Edge*>>\ adjacencyList;}
+\DoxyCodeLine{00034\ \ \ \ \ std::unordered\_map<int,\ Node*>\ nodes;}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GRAPH\_H}}
+
+\end{DoxyCode}

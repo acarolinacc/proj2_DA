@@ -1,0 +1,59 @@
+\doxysection{Node.\+h}
+\hypertarget{_node_8h_source}{}\label{_node_8h_source}\index{C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-\/stuff/DA/Project2/proj2\_DA/src/Node.h@{C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-\/stuff/DA/Project2/proj2\_DA/src/Node.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ NODE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ NODE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_edge}{Edge}};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_node}{Node}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}(\textcolor{keywordtype}{int}\ idx,\ \textcolor{keywordtype}{double}\ lat\ =\ 0.0,\ \textcolor{keywordtype}{double}\ lon\ =\ 0.0);}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}(\textcolor{keywordtype}{int}\ idx);}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ addEdge(\mbox{\hyperlink{class_edge}{Edge}}*\ edge);}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ removeEdge(\mbox{\hyperlink{class_edge}{Edge}}*\ edge);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ getId()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Edge*>\&\ getAdjacencies()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ getLatitude()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{double}\ getLongitude()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ isVisited()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ setVisited(\textcolor{keywordtype}{bool}\ visited);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ getDistance()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ setDistance(\textcolor{keywordtype}{double}\ distance);}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge}}*\ getPath()\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ Alterado\ para\ Edge*}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ setPath(\mbox{\hyperlink{class_edge}{Edge}}*\ edge);\ \textcolor{comment}{//\ Alterado\ para\ Edge*}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ incrementMSTDegree();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ getMSTDegree()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Edge*>\&\ getIncomingEdges()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ addIncomingEdge(\mbox{\hyperlink{class_edge}{Edge}}*\ edge);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_node}{Node}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ getQueueIndex()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ queueIndex;}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ setQueueIndex(\textcolor{keywordtype}{int}\ index)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ queueIndex\ =\ index;}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ queueIndex;}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge}}\ *findEdgeTo(\mbox{\hyperlink{class_node}{Node}}\ *destination);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}\ latitude,\ longitude;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ visited;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{double}\ distance;}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge}}*\ path;\ \textcolor{comment}{//\ Alterado\ para\ Edge*}}
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<Edge*>\ adjacencies;}
+\DoxyCodeLine{00049\ \ \ \ \ std::vector<Edge*>\ incomingEdges;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ mstDegree;}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ NODE\_H}}
+
+\end{DoxyCode}

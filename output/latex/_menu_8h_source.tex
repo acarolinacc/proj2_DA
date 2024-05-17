@@ -1,0 +1,82 @@
+\doxysection{Menu.\+h}
+\hypertarget{_menu_8h_source}{}\label{_menu_8h_source}\index{C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-\/stuff/DA/Project2/proj2\_DA/src/Menu.h@{C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-\/stuff/DA/Project2/proj2\_DA/src/Menu.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ PROJETO\_2\_MENU\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ PROJETO\_2\_MENU\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Graph.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Algorithms.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu}{Menu}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_graph}{Graph}}\ graph;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ graph\_loaded;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_menu_a608f1b68e920085bff7567c0a12efa55}{Menu}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_graph}{Graph}}\ \&graph,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&graph\_loaded);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ start();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ helpMenu();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ returnMenu();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ quit();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ verifyLoadedGraph();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ messageLoop();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ algorithmDescription(\textcolor{keywordtype}{int}\ menu);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ LoadMenu();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ helpLoadMenu();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ toyGraphs();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ extendedGraphs();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ realWorldGraphs();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ graphLoaded();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ \ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/BACKTRACKING\ MENU-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ *}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ verifyGraphTypeBacktracking();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ BacktrackingMenu();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ \ \ \ \ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/TRIANGULAR\ APPROXIMATION\ HEURISTIC\ MENU-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ *}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ TriApproxMenu();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ \ \ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/OTHER\ HEURISTIC\ MENU-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ *}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ otherHeuristicsAlgorithm();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ OtherHeuristicsMenu();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ TSPRealWorldMenu();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

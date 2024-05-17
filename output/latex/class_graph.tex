@@ -1,0 +1,44 @@
+\doxysection{Graph Class Reference}
+\hypertarget{class_graph}{}\label{class_graph}\index{Graph@{Graph}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_graph_ac6cf6f4edf8473f02fb7ef538e8530c1}\label{class_graph_ac6cf6f4edf8473f02fb7ef538e8530c1} 
+int {\bfseries read\+Real\+World\+Graph} (const std\+::string \&nodes\+File\+Path, const std\+::string \&edges\+File\+Path)
+\item 
+\Hypertarget{class_graph_a28dc5d659bb48bd9e37a24f516808817}\label{class_graph_a28dc5d659bb48bd9e37a24f516808817} 
+int {\bfseries read\+Extra\+Graphs} (const std\+::string \&edges\+File\+Path)
+\item 
+\Hypertarget{class_graph_a04797168165b253bd3d707a7d20e4378}\label{class_graph_a04797168165b253bd3d707a7d20e4378} 
+int {\bfseries read\+Toy\+Graph} (const std\+::string \&file\+Path)
+\item 
+\Hypertarget{class_graph_a54c1de5189a956e27d2c956d23efbd8b}\label{class_graph_a54c1de5189a956e27d2c956d23efbd8b} 
+void {\bfseries add\+Node} (int index, double latitude, double longitude)
+\item 
+\Hypertarget{class_graph_a6bbff946e5f63af3e4a36dd994f1a55e}\label{class_graph_a6bbff946e5f63af3e4a36dd994f1a55e} 
+void {\bfseries add\+Node} (int index)
+\item 
+\Hypertarget{class_graph_ad1a53c68b1917909c00a14c2b0f088e5}\label{class_graph_ad1a53c68b1917909c00a14c2b0f088e5} 
+void {\bfseries add\+Bidirectional\+Edge} (int src\+Index, int dest\+Index, double weight)
+\item 
+\Hypertarget{class_graph_aa478194e93b41213c11ef14867a5de2f}\label{class_graph_aa478194e93b41213c11ef14867a5de2f} 
+\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} {\bfseries find\+Node} (int index) const
+\item 
+\Hypertarget{class_graph_acc68ceaae5b44fc5465eafc854ad141e}\label{class_graph_acc68ceaae5b44fc5465eafc854ad141e} 
+void {\bfseries display\+Graph} ()
+\item 
+\Hypertarget{class_graph_adda7045b629c706b370392245826b334}\label{class_graph_adda7045b629c706b370392245826b334} 
+void {\bfseries clear\+Nodes} ()
+\item 
+\Hypertarget{class_graph_a7d20a58a4a7a1fd3db389620de390dd5}\label{class_graph_a7d20a58a4a7a1fd3db389620de390dd5} 
+std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+Nodes} () const
+\item 
+\Hypertarget{class_graph_a34de057443112c13b150c60e37a68906}\label{class_graph_a34de057443112c13b150c60e37a68906} 
+double {\bfseries calculate\+Haversine\+Distance} (double lat1, double lon1, double lat2, double lon2)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Utilizador/\+One\+Drive/\+Documentos/\+Code/\+CLion-\/stuff/\+DA/\+Project2/proj2\+\_\+\+DA/src/Graph.\+h\item 
+C\+:/\+Users/\+Utilizador/\+One\+Drive/\+Documentos/\+Code/\+CLion-\/stuff/\+DA/\+Project2/proj2\+\_\+\+DA/src/Graph.\+cpp\end{DoxyCompactItemize}
