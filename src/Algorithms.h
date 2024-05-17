@@ -15,6 +15,7 @@ public:
     static double nearestNeighborHeuristic(Graph& graph, std::vector<int>& path);
 
 
+
 private:
     static double toRadians(double degree);
 
@@ -23,6 +24,7 @@ private:
     std::vector<int> generateEulerCircuit(const std::set<Edge *> &doubledMst, Node *startNode);
 
     std::vector<int> createHamiltonianPath(const std::vector<int> &eulerCircuit);
+
 };
 
 #endif // ALGORITHMS_H

@@ -1,5 +1,7 @@
 #ifndef EDGE_H
 #define EDGE_H
+#include <vector>
+using namespace std;
 
 class Node;
 
@@ -15,6 +17,8 @@ private:
     Node* source;
     Node* destination;
     double distance;
+    vector<Edge*> outgoingEdges;
+    vector<Edge*> incomingEdges;
 };
 
 #endif // EDGE_H

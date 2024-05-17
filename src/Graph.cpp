@@ -21,9 +21,10 @@ Graph::~Graph() {
 }
 
 void Graph::addNode(int index, double latitude, double longitude) {
-    auto [it, inserted] = nodes.try_emplace(index, new Node(index, latitude, longitude));
-    if (!inserted) {
-        cerr << "Node " << index << " already exists.\n";
+    if (nodes.find(index) == nodes.end()) {
+        nodes[index] = new Node(index, latitude, longitude);
+    } else {
+        std::cerr << "Node " << index << " already exists.\n";
     }
 }
 
@@ -42,6 +43,7 @@ void Graph::addBidirectionalEdge(int srcIndex, int destIndex, double weight) {
     Edge* edgeToSrc = new Edge(destNode, srcNode, weight);
     srcNode->addEdge(edgeToDest);
     destNode->addEdge(edgeToSrc);
+
 }
 
 Node * Graph::findNode(int index) const {
@@ -49,6 +51,7 @@ Node * Graph::findNode(int index) const {
     return it != nodes.end() ? it->second : nullptr;
 }
 
+/*
 void Graph::displayGraph() {
     cout << "Graph nodes:\n";
     for (auto& pair : nodes) {
@@ -73,6 +76,15 @@ void Graph::displayGraph() {
     }
 }
 
+void Graph::resetNodes() {
+    for (auto& pair : nodes) {
+        Node* node = pair.second;
+        node->setVisited(false);
+        node->setDistance(std::numeric_limits<double>::infinity());
+        node->setPath(nullptr);
+    }
+}
+*/
 
 void Graph::clearNodes() {
     for (auto& pair : nodes) {

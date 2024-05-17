@@ -68,6 +68,8 @@ public:
 
     bool TSPRealWorldMenu();
 
+    bool RealWorldCase(int StartIndexNode, Graph& Real);
+
 };
 
 

@@ -27,6 +27,7 @@ struct NodeDistance {
 std::set<Edge*> Algorithms::prim(const Graph& graph) {
     auto nodes = graph.getNodes();
     if (nodes.empty()) {
+        std::cerr << "The graph is empty." << std::endl;
         return {};
     }
 
@@ -55,7 +56,6 @@ std::set<Edge*> Algorithms::prim(const Graph& graph) {
     root->setDistance(0);
     MutablePriorityQueue<Node> q;
     q.insert(root);
-
 
     while (!q.empty()) {
         Node* v = q.extractMin();
@@ -87,7 +87,6 @@ std::set<Edge*> Algorithms::prim(const Graph& graph) {
     return mst;
 }
 
-
 double Algorithms::calculateHaversineDistance(double lat1, double lon1, double lat2, double lon2) {
     auto toRadians = [](double degree) {
         return degree * PI / 180.0;
@@ -108,59 +107,61 @@ double Algorithms::calculateHaversineDistance(double lat1, double lon1, double l
 
     double distance = EARTH_RADIUS * c;
 
-    cout << "Haversine distance between (" << lat1 << ", " << lon1 << ") and (" << lat2 << ", " << lon2 << ") is: " << distance << " meters." << endl;
 
     return distance;
 }
 
-
-
 double Algorithms::triangularApproximationHeuristic(Graph graph, vector<int>& path) {
-    set<Edge*> mst = prim(graph);
+    std::set<Edge*> mst = prim(graph);
     if (mst.empty() || mst.size() != graph.getNodes().size() - 1) {
-        cerr << "Error: Minimum Spanning Tree not properly constructed." << endl;
+        std::cerr << "Error: Minimum Spanning Tree not properly constructed." << std::endl;
         return -1.0;
     }
 
-    // duplica arestas
-    unordered_map<Node*, vector<Node*>> adjList;
+    std::unordered_map<Node*, std::vector<Node*>> adjList;
     for (Edge* edge : mst) {
         adjList[edge->getSource()].push_back(edge->getDestination());
         adjList[edge->getDestination()].push_back(edge->getSource());
     }
 
-    vector<int> eulerCircuit;
-    unordered_set<Node*> visited;
-    function<void(Node*)> dfs = [&](Node* node) {
+    std::vector<int> eulerCircuit;
+    std::unordered_set<Node*> visited;
+    std::function<void(Node*)> dfs = [&](Node* node) {
         visited.insert(node);
         eulerCircuit.push_back(node->getId());
-        for (Node* neighbor : adjList[node]) {
-            if (visited.find(neighbor) == visited.end()) {
+
+        std::vector<Node*> sortedNeighbors = adjList[node];
+        std::sort(sortedNeighbors.begin(), sortedNeighbors.end(),
+                  [](Node* a, Node* b) { return a->getId() < b->getId(); });
+
+        for (Node* neighbor : sortedNeighbors) {
+            if (!visited.count(neighbor)) {
                 dfs(neighbor);
             }
         }
     };
-    dfs(adjList.begin()->first);
 
-    unordered_set<int> visitedNodes;
-    vector<int> tempPath;
+    dfs(graph.findNode(0));
+
+    std::unordered_set<int> visitedNodes;
+    std::vector<int> tempPath;
     for (int nodeId : eulerCircuit) {
         if (visitedNodes.insert(nodeId).second) {
             tempPath.push_back(nodeId);
         }
     }
+
     if (!tempPath.empty() && tempPath.front() != 0) {
-        auto it = find(tempPath.begin(), tempPath.end(), 0);
+        auto it = std::find(tempPath.begin(), tempPath.end(), 0);
         std::rotate(tempPath.begin(), it, tempPath.end());
-        tempPath.push_back(0);
     }
+    tempPath.push_back(0);
     path = tempPath;
 
-    // distância total para o caminho Hamiltoniano
     double totalDistance = 0.0;
     for (size_t i = 0; i < path.size() - 1; ++i) {
         Node* currentNode = graph.findNode(path[i]);
-        Node* nextNode = graph.findNode(path[i+1]);
+        Node* nextNode = graph.findNode(path[i + 1]);
         Edge* edge = currentNode->findEdgeTo(nextNode);
         double distance = edge ? edge->getDistance() : calculateHaversineDistance(
                 currentNode->getLatitude(), currentNode->getLongitude(),
@@ -177,7 +178,6 @@ double Algorithms::triangularApproximationHeuristic(Graph graph, vector<int>& pa
  */
 
 
-
 double Algorithms::nearestNeighborHeuristic(Graph& graph, vector<int>& path) {
     unordered_set<Node*> visited;
     double totalDistance = 0.0;
@@ -186,11 +186,13 @@ double Algorithms::nearestNeighborHeuristic(Graph& graph, vector<int>& path) {
         cerr << "Error: The graph is empty." << endl;
         return -1.0;
     }
-    Node* startNode = graph.getNodes().begin()->second;
-    if (!startNode) {
-        cerr << "Error: Start node not found." << endl;
+
+    auto startNodeIt = graph.getNodes().find(0);
+    if (startNodeIt == graph.getNodes().end()) {
+        cerr << "Error: Start node with ID 0 not found." << endl;
         return -1.0;
     }
+    Node* startNode = startNodeIt->second;
 
     Node* currentNode = startNode;
     path.push_back(currentNode->getId());
@@ -247,3 +249,6 @@ double Algorithms::nearestNeighborHeuristic(Graph& graph, vector<int>& path) {
 
     return totalDistance;
 }
+
+
+

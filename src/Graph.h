@@ -24,7 +24,8 @@ public:
     void displayGraph();
     void clearNodes();
     std::unordered_map<int, Node*> getNodes() const;
-
+    std::unordered_map<int, std::vector<Edge>> getEdges();
+    void resetNodes();
 
     // Haversine distance calculation
     double calculateHaversineDistance(double lat1, double lon1, double lat2, double lon2);
