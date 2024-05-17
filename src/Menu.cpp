@@ -36,7 +36,7 @@ void Menu::start(){
         }
 
         else if(choice == "2"){
-            running = BacktrackingMenu();
+            running = backtrackingMenu();
         }
 
         else if (choice == "3"){
@@ -463,7 +463,7 @@ void Menu::algorithmDescription(int menu) {
  * -----------BACKTRACKING MENU----------- *
  */
 
-bool Menu::BacktrackingMenu() {
+bool Menu::backtrackingMenu() {
     if(!verifyGraphTypeBacktracking()) return true;
 
     string backtrackingChoice;
@@ -482,7 +482,7 @@ bool Menu::BacktrackingMenu() {
         cout << "|                                                         |\n";
 
         if(backtrackingChoice == "1"){
-            // backtrackingAlgorithm();
+            backtrackingAlgorithm();
         }
 
         else if(backtrackingChoice == "2"){
@@ -508,7 +508,20 @@ bool Menu::BacktrackingMenu() {
 }
 
 // TO-DO : 4.1. Backtracking Algorithm
-// void Menu::backtrackingAlgorithm() {}
+void Menu::backtrackingAlgorithm() {
+    std::pair<std::vector<Node*>, double> minPathAndCost = Algorithms::tspBacktracking(graph);
+
+    std::vector<Node*> min_path = minPathAndCost.first;
+    double min_cost = minPathAndCost.second;
+
+    cout << "\n\n" << "The minimal path is as follows: \n";
+    for(auto e : min_path){
+        cout <<" ID: " << e->getId() << "\n";
+    }
+
+    cout << "the minimal distance of the path is: "<< min_cost << "\n\n";
+
+}
 
 /*
  * --------------------------------- *

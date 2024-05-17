@@ -16,6 +16,11 @@ protected:
     Graph graph;
     int graph_loaded;
 public:
+    /**@brief
+     *  WAWAAWAWAWAWAWAWAW
+     * @param graph
+     * @param graph_loaded
+     */
     explicit Menu(const Graph &graph, const int &graph_loaded);
 
     void start();
@@ -50,7 +55,8 @@ public:
 
     bool verifyGraphTypeBacktracking();
 
-    bool BacktrackingMenu();
+    bool backtrackingMenu();
+    void backtrackingAlgorithm();
 
 
     /*

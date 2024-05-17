@@ -14,6 +14,8 @@ public:
     static double calculateHaversineDistance(double lat1, double lon1, double lat2, double lon2);
     static double nearestNeighborHeuristic(Graph& graph, std::vector<int>& path);
 
+    static std::pair<std::vector<Node*>, double> tspBacktracking(Graph& graph);
+    static void backtrack(Graph& graph, Node* node, std::vector<Node*> path, double cost, double& min_cost, int count, std::vector<Node*>& min_path);
 
 
 private:
