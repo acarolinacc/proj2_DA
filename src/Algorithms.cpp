@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include <functional>
+#include <chrono>
 
 using namespace std;
 
@@ -19,6 +20,18 @@ struct NodeDistance {
         return distance > other.distance;
     }
 };
+
+struct CompareDistances {
+    bool operator()(const pair<double, int>& a, const pair<double, int>& b) const {
+        return a.first > b.first;
+    }
+};
+
+
+/*
+ * -----------Backtracking Algorithm----------- *
+ */
+
 
 
 /*
@@ -297,4 +310,87 @@ std::pair<std::vector<Node*>, double> Algorithms::tspBacktracking( Graph &graph)
 }
 
 
+
+
+/*
+ * -----------TSP in the Real World----------- *
+ */
+
+void Algorithms::DFS(int currentIndex, Graph& Real, unordered_set<int>& visited) {
+    visited.insert(currentIndex);
+    auto edges = Real.getNodes().at(currentIndex)->getAdjacencies();
+    for (auto& edge : edges) {
+        if (visited.find(edge->getDestination()->getId()) == visited.end()) {
+            DFS(edge->getDestination()->getId(), Real, visited);
+        }
+    }
+}
+
+vector<int> Algorithms::nearestNeighborTSP(Graph& Real, int start, double& totalDistance) {
+    vector<int> tour;
+    unordered_set<int> visited;
+    int current = start;
+    totalDistance = 0.0;
+
+    while (visited.size() < Real.getNodes().size()) {
+        visited.insert(current);
+        tour.push_back(current);
+
+        double minDistance = numeric_limits<double>::infinity();
+        int nextNode = -1;
+        auto edges = Real.getNodes().at(current)->getAdjacencies();
+        for (auto& edge : edges) {
+            int destID = edge->getDestination()->getId();
+            if (visited.find(destID) == visited.end() && edge->getDistance() < minDistance) {
+                minDistance = edge->getDistance();
+                nextNode = destID;
+            }
+        }
+
+        if (nextNode == -1) {
+            break;
+        }
+
+        totalDistance += minDistance;
+        current = nextNode;
+    }
+
+    if (!tour.empty()) {
+        totalDistance += Real.getNodes().at(tour.back())->findEdgeTo(Real.getNodes().at(start))->getDistance();
+        tour.push_back(start);
+    }
+
+    return tour;
+}
+
+void Algorithms::runRealWorldTSP(Graph& Real, int start) {
+    unordered_set<int> visited;
+    auto start_time = chrono::high_resolution_clock::now();
+
+    DFS(start, Real, visited);
+
+    if (visited.size() != Real.getNodes().size()) {
+        cout << "Debug: No path exists to visit all nodes and return to the start." << endl;
+        throw runtime_error("No path exists to visit all nodes and return to the start.");
+    }
+
+    double totalDistance = 0.0;
+    vector<int> tspTour = nearestNeighborTSP(Real, start, totalDistance);
+
+    if (tspTour.empty() || tspTour.front() != start) {
+        cout << "Debug: No valid tour found." << endl;
+        throw runtime_error("Error: No valid tour found.");
+    }
+
+    auto stop_time = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(stop_time - start_time);
+
+    cout << "TSP Tour: ";
+    for (int node : tspTour) {
+        cout << node << " ";
+    }
+    cout << endl;
+    cout << "Total Distance: " << totalDistance << " meters" << endl;
+    cout << "Time taken: " << duration.count() << " milliseconds" << endl;
+}
 

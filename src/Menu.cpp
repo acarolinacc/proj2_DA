@@ -1,4 +1,6 @@
 #include "Menu.h"
+#include <unordered_set>
+
 using namespace std;
 using namespace std::chrono;
 
@@ -361,7 +363,7 @@ bool Menu::realWorldGraphs() {
         if(choice == "1") {
             graph.clearNodes();
             graph.readRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph1/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph1/edges.csv");
-            graph_loaded = 3;
+            graph_loaded = 31;
             break;
         }
 
@@ -369,14 +371,14 @@ bool Menu::realWorldGraphs() {
         else if(choice == "2"){
             graph.clearNodes();
             graph.readRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph2/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph2/edges.csv");
-            graph_loaded = 3;
+            graph_loaded = 32;
             break;
         }
 
         else if(choice == "3"){
             graph.clearNodes();
             graph.readRealWorldGraph("../data/Real-world Graphs/Real-world Graphs/graph3/nodes.csv", "../data/Real-world Graphs/Real-world Graphs/graph3/edges.csv");
-            graph_loaded = 3;
+            graph_loaded = 33;
             break;
         }
 
@@ -540,7 +542,7 @@ bool Menu::TriApproxMenu() {
 
     string triAproxChoice;
 
-    cout << "\n|================= Triangular Approximation Heuristic Menu =====================|\n";
+    cout << "\n|========= Triangular Approximation Heuristic Menu =========|\n";
 
     while (true) {
         cout << "                                                           \n";
@@ -676,16 +678,18 @@ void Menu::otherHeuristicsAlgorithm() {
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = duration_cast<std::chrono::milliseconds>(end - start).count();
 
-    cout << "\n|================= Nearest Neighbor Heuristic =================|\n";
-    cout << "| Total distance: " << distance << " meters                      |\n";
-    cout << "| Time elapsed: " << duration << " ms                             |\n";
+    cout << "\n|========= Nearest Neighbor Heuristic =========|\n";
+    cout << "|                                              |\n";
+    cout << "| Total distance: " << distance << " meters    |\n";
+    cout << "| Time elapsed: " << duration << " ms          |\n";
+    cout << "|                                              |\n";
     cout << "| Path: ";
     for (size_t i = 0; i < path.size(); ++i) {
         if (i > 0) cout << " -> ";
         cout << path[i];
     }
     cout << " |\n";
-    cout << "|============================================================|\n";
+    cout << "|==============================================|\n";
 }
 
 /*
@@ -693,11 +697,9 @@ void Menu::otherHeuristicsAlgorithm() {
  */
 
 
-
 /*
  * -----------TSP REAL WORLD MENU----------- *
  */
-
 
 bool Menu::TSPRealWorldMenu() {
     if(!verifyLoadedGraph()) return true;
@@ -718,10 +720,8 @@ bool Menu::TSPRealWorldMenu() {
         cout << "|                                                           |\n";
 
         if(TSPRealWorldChoice == "1"){
-            // ourHeuristicsAlgorithm();
+            SelectionRealWorldNodeIndex();
         }
-
-            // ...
 
         else if(TSPRealWorldChoice == "2"){
             algorithmDescription(3);
@@ -740,10 +740,73 @@ bool Menu::TSPRealWorldMenu() {
         else{
             cout << "| Invalid selection. Please enter a valid option.          |\n";
             cout << "|                                                           |\n";
-            cout << "| Select one of the options bellow:                         \n";
+            cout << "| Select one of the options below:                         \n";
         }
     }
 }
+
+bool Menu::SelectionRealWorldNodeIndex() {
+    if(!verifyLoadedGraph()) return true;
+
+    string TSPRealWorldChoice;
+
+    cout << "\n|================= TSP in the Real World Menu =====================|\n";
+    cout << "|                                                                  |\n";
+    while(true) {
+        cout << "| Graph 1 (0 -> 999)                                               |\n";
+        cout << "| Graph 2 (0 -> 4999)                                              |\n";
+        cout << "| Graph 3 (0 -> 9999)                                              |\n";
+        cout << "| Shipping (0 -> 13)                                               |\n";
+        cout << "| r - Return to Main Menu                                          |\n";
+        cout << "| q - Exit Program                                                 |\n";
+        cout << "|                                                                  |\n";
+        cout << "| Please select a number according to the graph loaded             |\n";
+        cout << "| Select an option: ";
+        getline(cin, TSPRealWorldChoice);
+        cout << "|                                                                  |\n";
+
+        //Caso Graph 1
+        if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 999 && graph_loaded == 31) {
+            RealWorldCase(stoi(TSPRealWorldChoice), graph, algorithms);
+            return true;
+        }
+        //Caso Graph 2
+        if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 4999 && graph_loaded == 32) {
+            RealWorldCase(stoi(TSPRealWorldChoice), graph, algorithms);
+            return true;
+        }
+        //Caso Graph 3
+        if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 9999 && graph_loaded == 33) {
+            RealWorldCase(stoi(TSPRealWorldChoice), graph, algorithms);
+            return true;
+        }
+        //Caso Shipping
+        if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 13 && graph_loaded == 1) {
+            RealWorldCase(stoi(TSPRealWorldChoice), graph, algorithms);
+            return true;
+        }
+
+        if (TSPRealWorldChoice == "r") {
+            returnMenu();
+            return true;
+        }
+
+        if (TSPRealWorldChoice == "q") {
+            quit();
+            return false;
+        } else {
+            cout << "| Invalid selection. Please enter a valid option.          |\n";
+            cout << "|                                                           |\n";
+            cout << "| Select one of the options below:                         \n";
+        }
+    }
+}
+
+bool Menu::RealWorldCase(int StartIndexNode, Graph& Real, Algorithms& algorithms) {
+    algorithms.runRealWorldTSP(Real, StartIndexNode);
+    return true;
+}
+
 
 /*
  * --------------------------------- *
