@@ -389,8 +389,12 @@ void Algorithms::runRealWorldTSP(Graph& Real, int start) {
     for (int node : tspTour) {
         cout << node << " ";
     }
+    cout << " " << endl;
     cout << endl;
     cout << "Total Distance: " << totalDistance << " meters" << endl;
+    cout << " " << endl;
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
+    cout << " " << endl;
+
 }
 

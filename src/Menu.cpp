@@ -9,7 +9,7 @@ Menu::Menu(const Graph &graph, const int &graph_loaded): graph(graph), graph_loa
 void Menu::start(){
     bool running = true;
 
-    cout << "\n|==================== TSP Explorer ====================|\n";
+    cout << "\n|==================== TSP Explorer =======================|\n";
     cout << "|                                                         |\n";
     cout << "|             - Welcome to TSP Explorer -                 |\n";
     cout << "|                                                         |\n";
@@ -21,16 +21,16 @@ void Menu::start(){
         cout << "|                      MAIN MENU                          |\n";
         cout << "|                                                         |\n";
         cout << "| 1 - Load Graph Data                                     |\n";
-        cout << "| 2 - Execute Backtracking Solver                         |\n";
-        cout << "| 3 - Apply Triangular Heuristic                          |\n";
+        cout << "| 2 - Backtracking Algorithm                              |\n";
+        cout << "| 3 - Triangular Approximation Heuristic                  |\n";
         cout << "| 4 - Explore Additional Heuristics                       |\n";
-        cout << "| 5 - Tackle Real-World TSP Scenarios                     |\n";
+        cout << "| 5 - TSP in the Real World                               |\n";
         cout << "| 6 - Program Assistance                                  |\n";
         cout << "| q - Exit Application                                    |\n";
         cout << "|                                                         |\n";
         cout << "| Select an option: ";
         getline(cin, choice);
-        cout << "|                                                         |\n";
+        cout << "                                                           \n";
 
 
         if (choice == "1"){
@@ -75,8 +75,6 @@ void Menu::start(){
 bool Menu::LoadMenu() {
     bool running;
 
-    cout << "|-----------------------------------------------------------|\n";
-    cout << "|                                                           |\n";
 
     while (true) {
         string choice;
@@ -93,7 +91,7 @@ bool Menu::LoadMenu() {
         cout << "|                                                       |\n";
         cout << "| Please choose an option: ";
         getline(cin, choice);
-        cout << "|                                                       |\n";
+        cout << "                                                       \n";
 
         if(choice == "1") {
             running = toyGraphs();
@@ -203,12 +201,10 @@ bool Menu::verifyGraphTypeBacktracking() {
 
 bool Menu::toyGraphs(){
 
-    cout << "|-----------------------------------------------------------|\n";
-    cout << "|                                                           |\n";
 
     while (true){
         string choice;
-        cout << "\n|=========================== Toy Graphs ===========================|\n";
+        cout << "\n|=========================== Toy Graphs ============================|\n";
         cout << "|                                                                   |\n";
         cout << "| 1 - Shipping                                                      |\n";
         cout << "| 2 - Stadiums                                                      |\n";
@@ -218,7 +214,7 @@ bool Menu::toyGraphs(){
         cout << "|                                                                   |\n";
         cout << "| Enter your choice: ";
         getline(cin, choice);
-        cout << "|                                                                   |\n";
+        cout << "                                                                   \n";
 
         if(choice == "1") {
             graph.clearNodes();
@@ -287,7 +283,7 @@ bool Menu::extendedGraphs() {
         cout << "|                                                                   |\n";
         cout << "| Enter your value: ";
         getline(cin, choice);
-        cout << "|                                                                   |\n";
+        cout << "                                                                   \n";
 
         int choiceNum;
         try {
@@ -358,7 +354,7 @@ bool Menu::realWorldGraphs() {
         cout << "|                                                                   |\n";
         cout << "| Enter your choice: ";
         getline(cin, choice);
-        cout << "|                                                                   |\n";
+        cout << "                                                                   \n";
 
         if(choice == "1") {
             graph.clearNodes();
@@ -416,19 +412,21 @@ bool Menu::realWorldGraphs() {
 
 void Menu::algorithmDescription(int menu) {
     if (menu == 1) {
-        cout << "\n|================ Algorithm Description ==================|\n";
-        cout << "|                                                         |\n";
-        cout << "| Backtracking is a brute-force approach that exhaustively|\n";
-        cout << "| explores all possible paths to find the optimal solution.|\n";
-        cout << "| It is computationally intensive but ensures the best    |\n";
-        cout << "| result.                                                  |\n";
-        cout << "|                                                         |\n";
-        cout << "|=========================================================|\n\n";
+        cout << "\n|================ Algorithm Description ====================|\n";
         cout << "|                                                           |\n";
+        cout << "| Backtracking is a brute-force approach that exhaustively  |\n";
+        cout << "| explores all possible paths to find the optimal solution. |\n";
+        cout << "| It is computationally intensive but ensures the best      |\n";
+        cout << "| result.                                                   |\n";
+        cout << "|                                                           |\n";
+        cout << "|===========================================================|\n\n";
+        cout << "                                                           \n";
         cout << "\n|================= Backtracking Menu =====================|\n";
+        cout <<   "|                                                         |\n";
+
     }
     else if (menu == 2){
-        cout << "\n|================ Algorithm Description ==================|\n";
+        cout << "\n|================ Algorithm Description ====================|\n";
         cout << "|                                                           |\n";
         cout << "| The Triangular Approximation Heuristic is a greedy        |\n";
         cout << "| algorithm that tries to find the best solution by always  |\n";
@@ -439,19 +437,52 @@ void Menu::algorithmDescription(int menu) {
         cout << "| isn't connected to the current node, it will still be     |\n";
         cout << "| chosen by an approximation.                               |\n";
         cout << "|                                                           |\n";
-        cout << "|=========================================================|\n\n";
-        cout << "|                                                           |\n";
-        cout << "\n|================= Triangular Approximation Heuristic Menu =====================|\n";
+        cout << "|===========================================================|\n\n";
+        cout << "                                                           \n";
+        cout << "\n|========= Triangular Approximation Heuristic Menu =======|\n";
     }
     else if(menu == 3){
-        cout << "\n|================ Algorithm Description ==================|\n";
+        cout << "\n|================= Algorithm Description ===================|\n";
         cout << "|                                                           |\n";
-        // Colocar aqui a descrição das nossas heuristics
+        cout << "| This heuristic algorithm applies the nearest neighbor     |\n";
+        cout << "| approach to solve the TSP problem. Starting from a        |\n";
+        cout << "| designated node, it iteratively selects the nearest       |\n";
+        cout << "| unvisited node until all nodes are visited, forming a     |\n";
+        cout << "| path. Finally, the algorithm returns to the starting      |\n";
+        cout << "| node, completing the tour.                                |\n";
         cout << "|                                                           |\n";
-        cout << "|=========================================================|\n\n";
+        cout << "| This implementation handles both fully connected and      |\n";
+        cout << "| disconnected graphs. In the case of disconnected graphs,  |\n";
+        cout << "| the algorithm will attempt to find a path visiting all    |\n";
+        cout << "| reachable nodes. If a complete path is not possible, an   |\n";
+        cout << "| error message will be displayed.                          |\n";
         cout << "|                                                           |\n";
-        cout << "\n|================= Other Heuristics Menu =====================|\n";
+        cout << "|===========================================================|\n\n";
+        cout << "                                                             \n";
+        cout << "\n|=============== Other Heuristics Menu ===================|\n";
+
     }
+    else if(menu == 4){
+        cout << "\n|================= Algorithm Description ====================|\n";
+        cout << "|                                                            |\n";
+        cout << "| This algorithm addresses the TSP in real-world graphs,     |\n";
+        cout << "| which are often not fully connected. The process involves  |\n";
+        cout << "| a Depth-First Search (DFS) to ensure all nodes are         |\n";
+        cout << "| reachable from the starting point. If a complete path is   |\n";
+        cout << "| not possible, an error message is displayed. Otherwise,    |\n";
+        cout << "| the Nearest Neighbor heuristic is used to find a feasible  |\n";
+        cout << "| tour. This heuristic iteratively selects the closest       |\n";
+        cout << "| unvisited node until all nodes are visited, then returns   |\n";
+        cout << "| to the starting node. The algorithm also handles           |\n";
+        cout << "| disconnected graphs by attempting to find a path visiting  |\n";
+        cout << "| all reachable nodes.                                       |\n";
+        cout << "|                                                            |\n";
+        cout << "|============================================================|\n\n";
+        cout << "                                                             \n";
+        cout <<   "\n|============== TSP in the Real World Menu ===============|\n";
+    }
+
+
 }
 
 /*
@@ -481,7 +512,7 @@ bool Menu::backtrackingMenu() {
         cout << "|                                                         |\n";
         cout << "| Select an option: ";
         getline(cin, backtrackingChoice);
-        cout << "|                                                         |\n";
+        cout << "                                                         \n";
 
         if(backtrackingChoice == "1"){
             backtrackingAlgorithm();
@@ -509,20 +540,29 @@ bool Menu::backtrackingMenu() {
     }
 }
 
-// TO-DO : 4.1. Backtracking Algorithm
+// TO-DO: 4.1. Backtracking Algorithm
 void Menu::backtrackingAlgorithm() {
+    auto start_time = chrono::high_resolution_clock::now();
+
     std::pair<std::vector<Node*>, double> minPathAndCost = Algorithms::tspBacktracking(graph);
+
+    auto stop_time = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(stop_time - start_time);
 
     std::vector<Node*> min_path = minPathAndCost.first;
     double min_cost = minPathAndCost.second;
 
-    cout << "\n\n" << "The minimal path is as follows: \n";
-    for(auto e : min_path){
-        cout <<" ID: " << e->getId() << "\n";
+    cout << "\n\nThe minimal path is as follows:\n";
+    for (size_t i = 0; i < min_path.size(); ++i) {
+        if (i > 0) {
+            cout << " -> ";
+        }
+        cout << min_path[i]->getId();
     }
-
-    cout << "the minimal distance of the path is: "<< min_cost << "\n\n";
-
+    cout << "\n";
+    cout << "\nThe minimal distance of the path is: " << min_cost << " meters \n";
+    cout << "\n";
+    cout << "Time taken: " << duration.count() << " milliseconds\n\n";
 }
 
 /*
@@ -536,16 +576,17 @@ void Menu::backtrackingAlgorithm() {
  * -----------TRIANGULAR APPROXIMATION MENU----------- *
  */
 
+// 4.2. Triangular Approximation Heuristic
 
 bool Menu::TriApproxMenu() {
     if (!verifyLoadedGraph()) return true;
 
     string triAproxChoice;
 
-    cout << "\n|========= Triangular Approximation Heuristic Menu =========|\n";
+    cout << "\n|========= Triangular Approximation Heuristic Menu =======|\n";
 
     while (true) {
-        cout << "                                                           \n";
+        cout << "|                                                         |\n";
         cout << "| 1 - Execute Algorithm                                   |\n";
         cout << "| 2 - Algorithm Details                                   |\n";
         cout << "| r - Return to Main Menu                                 |\n";
@@ -611,10 +652,6 @@ bool Menu::TriApproxMenu() {
 }
 
 
-
-// TO-DO : 4.2. Triangular Approximation Heuristic
-// void Menu::triApproxAlgorithm() {}
-
 /*
  * --------------------------------- *
  */
@@ -632,8 +669,8 @@ bool Menu::OtherHeuristicsMenu() {
 
     string otherHeuristicsChoice;
 
-      cout << "\n|=============== Other Heuristics Menu ===================|\n";
-        cout << "|                                                         |\n";
+    cout << "\n|=============== Other Heuristics Menu ===================|\n";
+    cout << "|                                                         |\n";
     while(true){
         cout << "|                                                         |\n";
         cout << "| 1 - Execute Nearest Neighbor Heuristic                  |\n";
@@ -643,7 +680,7 @@ bool Menu::OtherHeuristicsMenu() {
         cout << "|                                                         |\n";
         cout << "| Select an option: ";
         getline(cin, otherHeuristicsChoice);
-        cout << "|                                                           |\n";
+        cout << "                                                           \n";
 
         if(otherHeuristicsChoice == "1"){
             otherHeuristicsAlgorithm();
@@ -679,16 +716,16 @@ void Menu::otherHeuristicsAlgorithm() {
     auto duration = duration_cast<std::chrono::milliseconds>(end - start).count();
 
     cout << "\n|========= Nearest Neighbor Heuristic =========|\n";
-    cout << "|                                              |\n";
-    cout << "| Total distance: " << distance << " meters    |\n";
-    cout << "| Time elapsed: " << duration << " ms          |\n";
-    cout << "|                                              |\n";
-    cout << "| Path: ";
+    cout << "                                              \n";
+    cout << " Total distance: " << distance << " meters    \n";
+    cout << " Time elapsed: " << duration << " ms          \n";
+    cout << "                                              \n";
+    cout << " Path: ";
     for (size_t i = 0; i < path.size(); ++i) {
         if (i > 0) cout << " -> ";
         cout << path[i];
     }
-    cout << " |\n";
+    cout << " \n";
     cout << "|==============================================|\n";
 }
 
@@ -706,10 +743,9 @@ bool Menu::TSPRealWorldMenu() {
 
     string TSPRealWorldChoice;
 
-    cout << "\n|================= TSP in the Real World Menu =====================|\n";
-    cout << "|                                                           |\n";
+    cout <<   "\n|============== TSP in the Real World Menu ===============|\n";
     while(true){
-        cout << "|                                                           |\n";
+        cout << "|                                                         |\n";
         cout << "| 1 - Execute Algorithm                                   |\n";
         cout << "| 2 - Algorithm Details                                   |\n";
         cout << "| r - Return to Main Menu                                 |\n";
@@ -717,14 +753,14 @@ bool Menu::TSPRealWorldMenu() {
         cout << "|                                                         |\n";
         cout << "| Select an option: ";
         getline(cin, TSPRealWorldChoice);
-        cout << "|                                                           |\n";
+        cout << "                                                           \n";
 
         if(TSPRealWorldChoice == "1"){
             SelectionRealWorldNodeIndex();
         }
 
         else if(TSPRealWorldChoice == "2"){
-            algorithmDescription(3);
+            algorithmDescription(4);
         }
 
         else if(TSPRealWorldChoice == "r"){
@@ -763,7 +799,7 @@ bool Menu::SelectionRealWorldNodeIndex() {
         cout << "| Please select a number according to the graph loaded             |\n";
         cout << "| Select an option: ";
         getline(cin, TSPRealWorldChoice);
-        cout << "|                                                                  |\n";
+        cout << "                                                                  \n";
 
         //Caso Graph 1
         if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 999 && graph_loaded == 31) {
@@ -853,14 +889,20 @@ void Menu::helpMenu() {
     cout << "| 4 - Other Heuristics: Explore additional heuristic      |\n";
     cout << "|     strategies developed by our team to find efficient  |\n";
     cout << "|     routes across the graphs.                           |\n";
-    cout << "|                                                         |\n";
-    cout << "| Usage Tips: Start by loading a graph to set up the      |\n";
-    cout << "|     environment. Subsequently, you can execute the      |\n";
-    cout << "|     algorithms to discover the shortest routes.         |\n";
-    cout << "|                                                         |\n";
-    cout << "|=========================================================|\n";
-    cout << "|                                                         |\n";
+    cout << "| 5 - TSP in the Real World: Handles real-world graphs    |\n";
+    cout << "|     which are often not fully connected. Ensures a      |\n>";
+    cout << "|     feasible tour using Depth-First Search (DFS) to     |\n>";
+    cout << "|     verify reachability and the Nearest Neighbor        |\n>";
+    cout << "|     heuristic to find a practical route.                |\n>";
+    cout << "|                                                         |\n>";
+    cout << "| Usage Tips: Start by loading a graph to set up the      |\n>";
+    cout << "|     environment. Subsequently, you can execute the      |\n>";
+    cout << "|     algorithms to discover the shortest routes.         |\n>";
+    cout << "|                                                         |\n>";
+    cout << "|=========================================================|\n>";
+    cout << "                                                         \n>";
 }
+
 
 
 void Menu::returnMenu() {
