@@ -25,7 +25,8 @@ void Menu::start(){
         cout << "| 3 - Triangular Approximation Heuristic                  |\n";
         cout << "| 4 - Explore Additional Heuristics                       |\n";
         cout << "| 5 - TSP in the Real World                               |\n";
-        cout << "| 6 - Program Assistance                                  |\n";
+        cout << "| 6 - Algorithm Comparison                                |\n";
+        cout << "| 7 - Program Assistance                                  |\n";
         cout << "| q - Exit Application                                    |\n";
         cout << "|                                                         |\n";
         cout << "| Select an option: ";
@@ -54,6 +55,9 @@ void Menu::start(){
         }
 
         else if(choice == "6")
+            compareEfficiency();
+
+        else if(choice == "7")
             helpMenu();
 
         else if(choice == "q"){
@@ -540,7 +544,7 @@ bool Menu::backtrackingMenu() {
     }
 }
 
-// TO-DO: 4.1. Backtracking Algorithm
+// 4.1. Backtracking Algorithm
 void Menu::backtrackingAlgorithm() {
     auto start_time = chrono::high_resolution_clock::now();
 
@@ -663,7 +667,7 @@ bool Menu::TriApproxMenu() {
  * -----------OTHER HEURISTICS MENU----------- *
  */
 
-// TO-DO : 4.3.Other Heuristics
+// 4.3.Other Heuristics
 bool Menu::OtherHeuristicsMenu() {
     if(!verifyLoadedGraph()) return true;
 
@@ -801,22 +805,22 @@ bool Menu::SelectionRealWorldNodeIndex() {
         getline(cin, TSPRealWorldChoice);
         cout << "                                                                  \n";
 
-        //Caso Graph 1
+        // Graph 1
         if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 999 && graph_loaded == 31) {
             RealWorldCase(stoi(TSPRealWorldChoice), graph, algorithms);
             return true;
         }
-        //Caso Graph 2
+        // Graph 2
         if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 4999 && graph_loaded == 32) {
             RealWorldCase(stoi(TSPRealWorldChoice), graph, algorithms);
             return true;
         }
-        //Caso Graph 3
+        // Graph 3
         if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 9999 && graph_loaded == 33) {
             RealWorldCase(stoi(TSPRealWorldChoice), graph, algorithms);
             return true;
         }
-        //Caso Shipping
+        // Shipping
         if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 13 && graph_loaded == 1) {
             RealWorldCase(stoi(TSPRealWorldChoice), graph, algorithms);
             return true;
@@ -847,6 +851,98 @@ bool Menu::RealWorldCase(int StartIndexNode, Graph& Real, Algorithms& algorithms
 /*
  * --------------------------------- *
  */
+
+void Menu::compareEfficiency() {
+    cout << "\n|=============== Compare Efficiency Menu =================|\n";
+    cout << "|                                                         |\n";
+
+    cout << "| Select the algorithms you want to compare:              |\n";
+    cout << "| 1 - Backtracking Algorithm                              |\n";
+    cout << "| 2 - Triangular Approximation Heuristic                  |\n";
+    cout << "| 3 - Nearest Neighbor Heuristic                          |\n";
+    cout << "| 4 - Real-World TSP Algorithm                            |\n";
+    cout << "| r - Return to Main Menu                                 |\n";
+    cout << "|                                                         |\n";
+    cout << "| Enter your choice (e.g., 1 2 3 for multiple selections): ";
+
+    string choices;
+    getline(cin, choices);
+
+    if (choices == "r") {
+        return;
+    }
+
+    vector<int> selectedAlgorithms;
+    istringstream ss(choices);
+    int choice;
+    while (ss >> choice) {
+        if (choice >= 1 && choice <= 4) {
+            selectedAlgorithms.push_back(choice);
+        }
+    }
+
+    if (selectedAlgorithms.empty()) {
+        cout << "| Invalid selection. Returning to main menu.              |\n";
+        return;
+    }
+
+    cout << "\n|================= Comparing Algorithms ==================|\n";
+    cout <<   "                                                          \n";
+
+
+    for (int algo : selectedAlgorithms) {
+        auto start_time = chrono::high_resolution_clock::now();
+        double totalDistance = 0.0;
+        vector<int> tour;
+
+        switch (algo) {
+            case 1:
+                cout << "| Running Backtracking Algorithm...                        \n";
+                {
+                    auto result = algorithms.tspBacktracking(graph);
+                    totalDistance = result.second;
+                    for (auto node : result.first) {
+                        tour.push_back(node->getId());
+                    }
+                }
+                break;
+            case 2:
+                cout << "| Running Triangular Approximation Heuristic...            \n";
+                totalDistance = algorithms.triangularApproximationHeuristic(graph, tour);
+                break;
+            case 3:
+                cout << "| Running Nearest Neighbor Heuristic...                    \n";
+                totalDistance = algorithms.nearestNeighborHeuristic(graph, tour);
+                break;
+            case 4:
+                cout << "| Running Real-World TSP Algorithm...                      \n";
+                {
+                    int startNode = 0;
+                    algorithms.runRealWorldTSP(graph, startNode);
+                }
+                break;
+            default:
+                break;
+        }
+
+        auto stop_time = chrono::high_resolution_clock::now();
+        auto duration = chrono::duration_cast<chrono::milliseconds>(stop_time - start_time);
+
+        cout << "| Algorithm " << algo << " completed.                     \n";
+        cout << "| Total Distance: " << totalDistance << " meters          \n";
+        cout << "| Time taken: " << duration.count() << " milliseconds     \n";
+        cout << "| Path: ";
+        for (size_t i = 0; i < tour.size(); ++i) {
+            if (i > 0) {
+                cout << " -> ";
+            }
+            cout << tour[i];
+        }
+        cout << "\n                                                         \n";
+    }
+
+    cout << "|=========================================================|\n";
+}
 
 
 
