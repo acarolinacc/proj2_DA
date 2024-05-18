@@ -32,7 +32,50 @@ struct CompareDistances {
  * -----------Backtracking Algorithm----------- *
  */
 
+void Algorithms::backtrack(Graph &graph, Node* node, std::vector<Node*> path, double cost, double &min_cost, int count,vector<Node*> &min_path) {
+    //base case
+    if(count == (graph.getNodes().size() + 1) && node->getId() == 0){
+        if(cost < min_cost){
+            min_cost = cost;
+            min_path = path;
+        }
+        //else skip? (pruning option)
+        return;
+    }
 
+    for(const auto& e : node->getAdjacencies() ){
+        Node* newNode = e->getDestination();
+
+        if(!newNode->isVisited()){
+            newNode->setVisited(true);
+            path.push_back(newNode);
+
+
+            backtrack(graph, newNode, path, cost + e->getDistance(), min_cost, count + 1, min_path);
+            path.pop_back();
+            newNode->setVisited(false);
+        }
+
+    }
+}
+
+std::pair<std::vector<Node*>, double> Algorithms::tspBacktracking( Graph &graph) {
+    std::vector<Node*> min_path;
+
+    for(auto& n : graph.getNodes()){
+        n.second->setVisited(false);
+    }
+
+    Node* startingNode = graph.findNode(0);
+    double min_cost = INT_MAX;
+
+    std::vector<Node*> path{startingNode};
+
+    backtrack(graph,startingNode,path,0,min_cost,1, min_path);
+
+    std::pair<std::vector<Node*>, double> result (min_path,min_cost);
+    return result;
+}
 
 /*
  * -----------Triangular Approximation Heuristic----------- *
@@ -263,52 +306,6 @@ double Algorithms::nearestNeighborHeuristic(Graph& graph, vector<int>& path) {
 
     return totalDistance;
 }
-
-void Algorithms::backtrack(Graph &graph, Node* node, std::vector<Node*> path, double cost, double &min_cost, int count,vector<Node*> &min_path) {
-    //base case
-    if(count == (graph.getNodes().size() + 1) && node->getId() == 0){
-        if(cost < min_cost){
-            min_cost = cost;
-            min_path = path;
-        }
-        //else skip? (pruning option)
-        return;
-    }
-
-    for(const auto& e : node->getAdjacencies() ){
-        Node* newNode = e->getDestination();
-
-        if(!newNode->isVisited()){
-            newNode->setVisited(true);
-            path.push_back(newNode);
-
-
-            backtrack(graph, newNode, path, cost + e->getDistance(), min_cost, count + 1, min_path);
-            path.pop_back();
-            newNode->setVisited(false);
-        }
-
-    }
-}
-
-std::pair<std::vector<Node*>, double> Algorithms::tspBacktracking( Graph &graph) {
-    std::vector<Node*> min_path;
-
-    for(auto& n : graph.getNodes()){
-        n.second->setVisited(false);
-    }
-
-    Node* startingNode = graph.findNode(0);
-    double min_cost = INT_MAX;
-
-    std::vector<Node*> path{startingNode};
-
-    backtrack(graph,startingNode,path,0,min_cost,1, min_path);
-
-    std::pair<std::vector<Node*>, double> result (min_path,min_cost);
-    return result;
-}
-
 
 
 

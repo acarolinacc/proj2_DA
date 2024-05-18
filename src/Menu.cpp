@@ -796,7 +796,6 @@ bool Menu::SelectionRealWorldNodeIndex() {
         cout << "| Graph 1 (0 -> 999)                                               |\n";
         cout << "| Graph 2 (0 -> 4999)                                              |\n";
         cout << "| Graph 3 (0 -> 9999)                                              |\n";
-        cout << "| Shipping (0 -> 13)                                               |\n";
         cout << "| r - Return to Main Menu                                          |\n";
         cout << "| q - Exit Program                                                 |\n";
         cout << "|                                                                  |\n";
@@ -821,10 +820,11 @@ bool Menu::SelectionRealWorldNodeIndex() {
             return true;
         }
         // Shipping
+        /*
         if (stoi(TSPRealWorldChoice) >= 0 && stoi(TSPRealWorldChoice) <= 13 && graph_loaded == 1) {
             RealWorldCase(stoi(TSPRealWorldChoice), graph, algorithms);
             return true;
-        }
+        }*/
 
         if (TSPRealWorldChoice == "r") {
             returnMenu();
