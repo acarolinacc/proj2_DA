@@ -72,30 +72,394 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_algorithms-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Algorithms Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aae6e4f21462bb977a460acd43d35ff43" id="r_aae6e4f21462bb977a460acd43d35ff43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae6e4f21462bb977a460acd43d35ff43">DFS</a> (int currentIndex, <a class="el" href="class_graph.html">Graph</a> &amp;Real, unordered_set&lt; int &gt; &amp;visited)</td></tr>
+<tr class="memdesc:aae6e4f21462bb977a460acd43d35ff43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Depth-First Search (DFS) on a graph.  <br /></td></tr>
+<tr class="separator:aae6e4f21462bb977a460acd43d35ff43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d6d8953389d3ab239a088d7003e73da" id="r_a6d6d8953389d3ab239a088d7003e73da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d6d8953389d3ab239a088d7003e73da">runRealWorldTSP</a> (<a class="el" href="class_graph.html">Graph</a> &amp;Real, int start)</td></tr>
+<tr class="memdesc:a6d6d8953389d3ab239a088d7003e73da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the Travelling Salesman Problem (TSP) for a real-world graph.  <br /></td></tr>
+<tr class="separator:a6d6d8953389d3ab239a088d7003e73da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6e4719610d6bb75dd70947ef362b3a6d" id="r_a6e4719610d6bb75dd70947ef362b3a6d"><td class="memItemLeft" align="right" valign="top"><a id="a6e4719610d6bb75dd70947ef362b3a6d" name="a6e4719610d6bb75dd70947ef362b3a6d"></a>
-static std::set&lt; <a class="el" href="class_edge.html">Edge</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>prim</b> (const <a class="el" href="class_graph.html">Graph</a> &amp;graph)</td></tr>
+<tr class="memitem:a6e4719610d6bb75dd70947ef362b3a6d" id="r_a6e4719610d6bb75dd70947ef362b3a6d"><td class="memItemLeft" align="right" valign="top">static std::set&lt; <a class="el" href="class_edge.html">Edge</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e4719610d6bb75dd70947ef362b3a6d">prim</a> (const <a class="el" href="class_graph.html">Graph</a> &amp;graph)</td></tr>
+<tr class="memdesc:a6e4719610d6bb75dd70947ef362b3a6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prim's algorithm.  <br /></td></tr>
 <tr class="separator:a6e4719610d6bb75dd70947ef362b3a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bfcefece46bc90af159f2d8afc01343" id="r_a8bfcefece46bc90af159f2d8afc01343"><td class="memItemLeft" align="right" valign="top"><a id="a8bfcefece46bc90af159f2d8afc01343" name="a8bfcefece46bc90af159f2d8afc01343"></a>
-static double&#160;</td><td class="memItemRight" valign="bottom"><b>triangularApproximationHeuristic</b> (<a class="el" href="class_graph.html">Graph</a> graph, std::vector&lt; int &gt; &amp;path)</td></tr>
+<tr class="memitem:a8bfcefece46bc90af159f2d8afc01343" id="r_a8bfcefece46bc90af159f2d8afc01343"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bfcefece46bc90af159f2d8afc01343">triangularApproximationHeuristic</a> (<a class="el" href="class_graph.html">Graph</a> graph, std::vector&lt; int &gt; &amp;path)</td></tr>
+<tr class="memdesc:a8bfcefece46bc90af159f2d8afc01343"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triangular Approximation Heuristic for the TSP.  <br /></td></tr>
 <tr class="separator:a8bfcefece46bc90af159f2d8afc01343"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f3c6ca4abd26b0bfe25a42ef9578d31" id="r_a9f3c6ca4abd26b0bfe25a42ef9578d31"><td class="memItemLeft" align="right" valign="top"><a id="a9f3c6ca4abd26b0bfe25a42ef9578d31" name="a9f3c6ca4abd26b0bfe25a42ef9578d31"></a>
-static double&#160;</td><td class="memItemRight" valign="bottom"><b>calculateHaversineDistance</b> (double lat1, double lon1, double lat2, double lon2)</td></tr>
+<tr class="memitem:a9f3c6ca4abd26b0bfe25a42ef9578d31" id="r_a9f3c6ca4abd26b0bfe25a42ef9578d31"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f3c6ca4abd26b0bfe25a42ef9578d31">calculateHaversineDistance</a> (double lat1, double lon1, double lat2, double lon2)</td></tr>
+<tr class="memdesc:a9f3c6ca4abd26b0bfe25a42ef9578d31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the Haversine distance between two points on the Earth's surface.  <br /></td></tr>
 <tr class="separator:a9f3c6ca4abd26b0bfe25a42ef9578d31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27e32e0fd612c27f12fbcc788afc12bc" id="r_a27e32e0fd612c27f12fbcc788afc12bc"><td class="memItemLeft" align="right" valign="top"><a id="a27e32e0fd612c27f12fbcc788afc12bc" name="a27e32e0fd612c27f12fbcc788afc12bc"></a>
-static double&#160;</td><td class="memItemRight" valign="bottom"><b>nearestNeighborHeuristic</b> (<a class="el" href="class_graph.html">Graph</a> &amp;graph, std::vector&lt; int &gt; &amp;path)</td></tr>
+<tr class="memitem:a27e32e0fd612c27f12fbcc788afc12bc" id="r_a27e32e0fd612c27f12fbcc788afc12bc"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27e32e0fd612c27f12fbcc788afc12bc">nearestNeighborHeuristic</a> (<a class="el" href="class_graph.html">Graph</a> &amp;graph, std::vector&lt; int &gt; &amp;path)</td></tr>
+<tr class="memdesc:a27e32e0fd612c27f12fbcc788afc12bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nearest Neighbor Heuristic for the TSP.  <br /></td></tr>
 <tr class="separator:a27e32e0fd612c27f12fbcc788afc12bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20d020b33ed92baa8deb548fff8852cf" id="r_a20d020b33ed92baa8deb548fff8852cf"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; std::vector&lt; <a class="el" href="class_node.html">Node</a> * &gt;, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20d020b33ed92baa8deb548fff8852cf">tspBacktracking</a> (<a class="el" href="class_graph.html">Graph</a> &amp;graph)</td></tr>
+<tr class="memdesc:a20d020b33ed92baa8deb548fff8852cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve the Travelling Salesman Problem (TSP) using backtracking.  <br /></td></tr>
+<tr class="separator:a20d020b33ed92baa8deb548fff8852cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba67881b2cff4406ac89234d72be22de" id="r_aba67881b2cff4406ac89234d72be22de"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba67881b2cff4406ac89234d72be22de">backtrack</a> (<a class="el" href="class_graph.html">Graph</a> &amp;graph, <a class="el" href="class_node.html">Node</a> *node, std::vector&lt; <a class="el" href="class_node.html">Node</a> * &gt; path, double cost, double &amp;min_cost, int count, std::vector&lt; <a class="el" href="class_node.html">Node</a> * &gt; &amp;min_path)</td></tr>
+<tr class="memdesc:aba67881b2cff4406ac89234d72be22de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursive backtracking helper function for TSP.  <br /></td></tr>
+<tr class="separator:aba67881b2cff4406ac89234d72be22de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aba67881b2cff4406ac89234d72be22de" name="aba67881b2cff4406ac89234d72be22de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba67881b2cff4406ac89234d72be22de">&#9670;&#160;</a></span>backtrack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Algorithms::backtrack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>graph</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_node.html">Node</a> *</td>          <td class="paramname"><span class="paramname"><em>node</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_node.html">Node</a> * &gt;</td>          <td class="paramname"><span class="paramname"><em>path</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>cost</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>min_cost</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>count</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_node.html">Node</a> * &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>min_path</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Recursive backtracking helper function for TSP. </p>
+<p>This function recursively explores all possible paths in the graph to find the minimum cost Hamiltonian cycle (tour). It updates the minimum cost and corresponding path whenever a complete tour with a lower cost is found.</p>
+<p>Time complexity: O(K ^ N)</p>
+<p>K - number of times the function calls itself </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graph</td><td>The graph representing the TSP. </td></tr>
+    <tr><td class="paramname">node</td><td>The current node being visited. </td></tr>
+    <tr><td class="paramname">path</td><td>The current path of nodes visited so far. </td></tr>
+    <tr><td class="paramname">cost</td><td>The current cost of the path. </td></tr>
+    <tr><td class="paramname">min_cost</td><td>A reference to the minimum cost found so far. </td></tr>
+    <tr><td class="paramname">count</td><td>The count of nodes visited in the current path. </td></tr>
+    <tr><td class="paramname">min_path</td><td>A reference to the vector storing the minimum cost path found so far. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9f3c6ca4abd26b0bfe25a42ef9578d31" name="a9f3c6ca4abd26b0bfe25a42ef9578d31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f3c6ca4abd26b0bfe25a42ef9578d31">&#9670;&#160;</a></span>calculateHaversineDistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Algorithms::calculateHaversineDistance </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>lat1</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>lon1</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>lat2</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>lon2</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate the Haversine distance between two points on the Earth's surface. </p>
+<p>This function computes the Haversine distance, which is the shortest distance over the Earth's surface, giving an "as-the-crow-flies" distance between two points (specified in latitude and longitude).</p>
+<p>Time complexity: O(1) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lat1</td><td>The latitude of the first point in degrees. </td></tr>
+    <tr><td class="paramname">lon1</td><td>The longitude of the first point in degrees. </td></tr>
+    <tr><td class="paramname">lat2</td><td>The latitude of the second point in degrees. </td></tr>
+    <tr><td class="paramname">lon2</td><td>The longitude of the second point in degrees. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>(double) The Haversine distance between the two points in kilometers. </dd></dl>
+
+</div>
+</div>
+<a id="aae6e4f21462bb977a460acd43d35ff43" name="aae6e4f21462bb977a460acd43d35ff43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae6e4f21462bb977a460acd43d35ff43">&#9670;&#160;</a></span>DFS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Algorithms::DFS </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>currentIndex</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>Real</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unordered_set&lt; int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>visited</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Depth-First Search (DFS) on a graph. </p>
+<p>This function performs a Depth-First Search (DFS) starting from a given node index. It explores as far as possible along each branch before backtracking, marking nodes as visited to avoid cycles and repeated visits.</p>
+<p>Time complexity: O(V + E)</p>
+<p>V - number of vertices (or nodes) in the graph</p>
+<p>E - number of edges in the graph </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">currentIndex</td><td>The index of the current node to start the DFS from. </td></tr>
+    <tr><td class="paramname">Real</td><td>The graph on which the DFS is performed. </td></tr>
+    <tr><td class="paramname">visited</td><td>An unordered set that keeps track of visited node indices to avoid revisiting nodes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a27e32e0fd612c27f12fbcc788afc12bc" name="a27e32e0fd612c27f12fbcc788afc12bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27e32e0fd612c27f12fbcc788afc12bc">&#9670;&#160;</a></span>nearestNeighborHeuristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Algorithms::nearestNeighborHeuristic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>graph</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nearest Neighbor Heuristic for the TSP. </p>
+<p>This function implements the nearest neighbor heuristic to approximate the solution to the Travelling Salesman Problem (TSP). It starts from a given node and repeatedly visits the nearest unvisited node until all nodes are visited.</p>
+<p>Time complexity: O(V^2)</p>
+<p>V - number of vertices (or nodes) in the graph </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graph</td><td>The graph representing the TSP. </td></tr>
+    <tr><td class="paramname">path</td><td>A vector that will be filled with the order of node IDs representing the approximate tour. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>(double) The estimated cost of the TSP tour. </dd></dl>
+
+</div>
+</div>
+<a id="a6e4719610d6bb75dd70947ef362b3a6d" name="a6e4719610d6bb75dd70947ef362b3a6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e4719610d6bb75dd70947ef362b3a6d">&#9670;&#160;</a></span>prim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::set&lt; <a class="el" href="class_edge.html">Edge</a> * &gt; Algorithms::prim </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_graph.html">Graph</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>graph</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prim's algorithm. </p>
+<p>Time complexity: O(E log V)</p>
+<p>V - number of vertices (or nodes) in the graph</p>
+<p>E - number of edges in the graph </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graph</td><td>The graph on which to run Prim's algorithm. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>(std::set&lt;Edge*&gt;) The set of edges forming the minimum spanning tree. </dd></dl>
+
+</div>
+</div>
+<a id="a6d6d8953389d3ab239a088d7003e73da" name="a6d6d8953389d3ab239a088d7003e73da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d6d8953389d3ab239a088d7003e73da">&#9670;&#160;</a></span>runRealWorldTSP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Algorithms::runRealWorldTSP </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>Real</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>start</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solves the Travelling Salesman Problem (TSP) for a real-world graph. </p>
+<p>This function executes the TSP algorithm on a given graph representing real-world locations, starting from a specified node. It typically involves setting up the graph, running a TSP heuristic or exact algorithm, and potentially outputting or processing the results.</p>
+<p>Time complexity: O(V^2)</p>
+<p>V - number of vertices (or nodes) in the graph </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Real</td><td>The graph representing the real-world TSP problem. </td></tr>
+    <tr><td class="paramname">start</td><td>The starting node index for the TSP tour. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8bfcefece46bc90af159f2d8afc01343" name="a8bfcefece46bc90af159f2d8afc01343"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bfcefece46bc90af159f2d8afc01343">&#9670;&#160;</a></span>triangularApproximationHeuristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Algorithms::triangularApproximationHeuristic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a></td>          <td class="paramname"><span class="paramname"><em>graph</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Triangular Approximation Heuristic for the TSP. </p>
+<p>This function implements a heuristic approach to approximate the solution to the Travelling Salesman Problem (TSP) using a triangular inequality-based method.</p>
+<p>Time complexity: O(V^2)</p>
+<p>V - number of vertices (or nodes) in the graph </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graph</td><td>The graph representing the TSP. </td></tr>
+    <tr><td class="paramname">path</td><td>A vector that will be filled with the order of node IDs representing the approximate tour. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>(double) The estimated cost of the TSP tour. </dd></dl>
+
+</div>
+</div>
+<a id="a20d020b33ed92baa8deb548fff8852cf" name="a20d020b33ed92baa8deb548fff8852cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20d020b33ed92baa8deb548fff8852cf">&#9670;&#160;</a></span>tspBacktracking()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; std::vector&lt; <a class="el" href="class_node.html">Node</a> * &gt;, double &gt; Algorithms::tspBacktracking </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>graph</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Solve the Travelling Salesman Problem (TSP) using backtracking. </p>
+<p>This function uses a backtracking approach to find the minimum cost Hamiltonian cycle (tour) in a given graph. It explores all possible tours and keeps track of the tour with the minimum cost.</p>
+<p>Time complexity: O(K ^ N)</p>
+<p>K - number of times the function calls itself </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graph</td><td>The graph representing the TSP. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>(std::pair&lt;std::vector&lt;Node*&gt;, double&gt;) A pair containing the vector of nodes representing the minimum cost tour and a double containing said cost. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-stuff/DA/Project2/proj2_DA/src/<a class="el" href="_algorithms_8h_source.html">Algorithms.h</a></li>
-<li>C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-stuff/DA/Project2/proj2_DA/src/<b>Algorithms.cpp</b></li>
+<li>CLion-stuff/DA/Project2/proj2_DA/src/<a class="el" href="_algorithms_8h_source.html">Algorithms.h</a></li>
+<li>CLion-stuff/DA/Project2/proj2_DA/src/<b>Algorithms.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

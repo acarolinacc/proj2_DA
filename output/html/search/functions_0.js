@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['menu_0',['Menu',['../class_menu.html#a608f1b68e920085bff7567c0a12efa55',1,'Menu']]]
+  ['backtrack_0',['backtrack',['../class_algorithms.html#aba67881b2cff4406ac89234d72be22de',1,'Algorithms']]]
 ];

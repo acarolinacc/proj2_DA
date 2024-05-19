@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['edge_0',['Edge',['../class_edge.html',1,'']]]
+  ['comparedistances_0',['CompareDistances',['../struct_compare_distances.html',1,'']]]
 ];

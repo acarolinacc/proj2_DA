@@ -17,11 +17,6 @@ protected:
     Algorithms algorithms;
     int graph_loaded;
 public:
-    /**@brief
-     *  WAWAAWAWAWAWAWAWAW
-     * @param graph
-     * @param graph_loaded
-     */
     explicit Menu(const Graph &graph, const int &graph_loaded);
 
     void start();

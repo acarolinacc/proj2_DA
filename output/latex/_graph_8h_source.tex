@@ -1,5 +1,5 @@
 \doxysection{Graph.\+h}
-\hypertarget{_graph_8h_source}{}\label{_graph_8h_source}\index{C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-\/stuff/DA/Project2/proj2\_DA/src/Graph.h@{C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-\/stuff/DA/Project2/proj2\_DA/src/Graph.h}}
+\hypertarget{_graph_8h_source}{}\label{_graph_8h_source}\index{CLion-\/stuff/DA/Project2/proj2\_DA/src/Graph.h@{CLion-\/stuff/DA/Project2/proj2\_DA/src/Graph.h}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRAPH\_H}}
@@ -28,16 +28,17 @@
 \DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ displayGraph();}
 \DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ clearNodes();}
 \DoxyCodeLine{00026\ \ \ \ \ std::unordered\_map<int,\ Node*>\ getNodes()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Haversine\ distance\ calculation}}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ calculateHaversineDistance(\textcolor{keywordtype}{double}\ lat1,\ \textcolor{keywordtype}{double}\ lon1,\ \textcolor{keywordtype}{double}\ lat2,\ \textcolor{keywordtype}{double}\ lon2);}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00033\ \ \ \ \ std::unordered\_map<int,\ std::vector<Edge*>>\ adjacencyList;}
-\DoxyCodeLine{00034\ \ \ \ \ std::unordered\_map<int,\ Node*>\ nodes;}
-\DoxyCodeLine{00035\ \};}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GRAPH\_H}}
+\DoxyCodeLine{00027\ \ \ \ \ std::unordered\_map<int,\ std::vector<Edge>>\ getEdges();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ resetNodes();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Haversine\ distance\ calculation}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{double}\ calculateHaversineDistance(\textcolor{keywordtype}{double}\ lat1,\ \textcolor{keywordtype}{double}\ lon1,\ \textcolor{keywordtype}{double}\ lat2,\ \textcolor{keywordtype}{double}\ lon2);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ std::unordered\_map<int,\ std::vector<Edge*>>\ adjacencyList;}
+\DoxyCodeLine{00035\ \ \ \ \ std::unordered\_map<int,\ Node*>\ nodes;}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GRAPH\_H}}
 
 \end{DoxyCode}

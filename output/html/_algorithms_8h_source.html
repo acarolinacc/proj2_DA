@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Projeto DA 2: C:/Users/Utilizador/OneDrive/Documentos/Code/CLion-stuff/DA/Project2/proj2_DA/src/Algorithms.h Source File</title>
+<title>Projeto DA 2: CLion-stuff/DA/Project2/proj2_DA/src/Algorithms.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,7 +76,7 @@ $(function() { codefold.init(0); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_90d0b6eae8414093ea3e30629b207ec1.html">Utilizador</a></li><li class="navelem"><a class="el" href="dir_820392c4869eb7dc53245a4986412938.html">OneDrive</a></li><li class="navelem"><a class="el" href="dir_0ba277736a3292d588feb2237c0de631.html">Documentos</a></li><li class="navelem"><a class="el" href="dir_85eec61ab0de0becd50409d3ac74e580.html">Code</a></li><li class="navelem"><a class="el" href="dir_f875e8efd43aca1548f9d9abd14b7898.html">CLion-stuff</a></li><li class="navelem"><a class="el" href="dir_76fdabbd4434862f36d79645c5a692fe.html">DA</a></li><li class="navelem"><a class="el" href="dir_d33a89b7963930cb4741b5e65ed06d10.html">Project2</a></li><li class="navelem"><a class="el" href="dir_02870860200b333fe451a581f2dea3b4.html">proj2_DA</a></li><li class="navelem"><a class="el" href="dir_62ab5eb2b97441102773b3af58d4d38a.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5752877149292bcfdcc0e94b6656eb83.html">CLion-stuff</a></li><li class="navelem"><a class="el" href="dir_48377c05f796d112415cdd2c98dd10da.html">DA</a></li><li class="navelem"><a class="el" href="dir_30ec8643ee9b73ab6a297f22efa2fd03.html">Project2</a></li><li class="navelem"><a class="el" href="dir_009171f87b4536e04dde24326114f7e8.html">proj2_DA</a></li><li class="navelem"><a class="el" href="dir_79fe00687f023a5ba2ad4cf9f3db0583.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -89,31 +89,47 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;limits&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Graph.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;MutablePriorityQueue.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_algorithms.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="class_algorithms.html">Algorithms</a> {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">static</span> std::set&lt;Edge*&gt; prim(<span class="keyword">const</span> <a class="code hl_class" href="class_graph.html">Graph</a>&amp; graph);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> triangularApproximationHeuristic(<a class="code hl_class" href="class_graph.html">Graph</a> graph, std::vector&lt;int&gt;&amp; path);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> calculateHaversineDistance(<span class="keywordtype">double</span> lat1, <span class="keywordtype">double</span> lon1, <span class="keywordtype">double</span> lat2, <span class="keywordtype">double</span> lon2);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> nearestNeighborHeuristic(<a class="code hl_class" href="class_graph.html">Graph</a>&amp; graph, std::vector&lt;int&gt;&amp; path);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> toRadians(<span class="keywordtype">double</span> degree);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    std::set&lt;Edge *&gt; duplicateEdges(<span class="keyword">const</span> std::set&lt;Edge *&gt; &amp;mst);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    std::vector&lt;int&gt; generateEulerCircuit(<span class="keyword">const</span> std::set&lt;Edge *&gt; &amp;doubledMst, <a class="code hl_class" href="class_node.html">Node</a> *startNode);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    std::vector&lt;int&gt; createHamiltonianPath(<span class="keyword">const</span> std::vector&lt;int&gt; &amp;eulerCircuit);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Graph.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;MutablePriorityQueue.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_algorithms.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="class_algorithms.html">Algorithms</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">static</span> std::set&lt;Edge*&gt; <a class="code hl_function" href="class_algorithms.html#a6e4719610d6bb75dd70947ef362b3a6d">prim</a>(<span class="keyword">const</span> <a class="code hl_class" href="class_graph.html">Graph</a>&amp; graph);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code hl_function" href="class_algorithms.html#a8bfcefece46bc90af159f2d8afc01343">triangularApproximationHeuristic</a>(<a class="code hl_class" href="class_graph.html">Graph</a> graph, std::vector&lt;int&gt;&amp; path);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code hl_function" href="class_algorithms.html#a9f3c6ca4abd26b0bfe25a42ef9578d31">calculateHaversineDistance</a>(<span class="keywordtype">double</span> lat1, <span class="keywordtype">double</span> lon1, <span class="keywordtype">double</span> lat2, <span class="keywordtype">double</span> lon2);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> <a class="code hl_function" href="class_algorithms.html#a27e32e0fd612c27f12fbcc788afc12bc">nearestNeighborHeuristic</a>(<a class="code hl_class" href="class_graph.html">Graph</a>&amp; graph, std::vector&lt;int&gt;&amp; path);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_algorithms.html#aae6e4f21462bb977a460acd43d35ff43">DFS</a>(<span class="keywordtype">int</span> currentIndex, <a class="code hl_class" href="class_graph.html">Graph</a>&amp; Real, unordered_set&lt;int&gt;&amp; visited);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keyword">static</span> std::pair&lt;std::vector&lt;Node*&gt;, <span class="keywordtype">double</span>&gt; <a class="code hl_function" href="class_algorithms.html#a20d020b33ed92baa8deb548fff8852cf">tspBacktracking</a>(<a class="code hl_class" href="class_graph.html">Graph</a>&amp; graph);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_algorithms.html#aba67881b2cff4406ac89234d72be22de">backtrack</a>(<a class="code hl_class" href="class_graph.html">Graph</a>&amp; graph, <a class="code hl_class" href="class_node.html">Node</a>* node, std::vector&lt;Node*&gt; path, <span class="keywordtype">double</span> cost, <span class="keywordtype">double</span>&amp; min_cost, <span class="keywordtype">int</span> count, std::vector&lt;Node*&gt;&amp; min_path);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_algorithms.html#a6d6d8953389d3ab239a088d7003e73da">runRealWorldTSP</a>(<a class="code hl_class" href="class_graph.html">Graph</a> &amp;Real, <span class="keywordtype">int</span> start);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    vector&lt;int&gt; nearestNeighborTSP(<a class="code hl_class" href="class_graph.html">Graph</a> &amp;Real, <span class="keywordtype">int</span> start, <span class="keywordtype">double</span> &amp;totalDistance);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>};</div>
 </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">// ALGORITHMS_H</span></div>
-<div class="ttc" id="aclass_algorithms_html"><div class="ttname"><a href="class_algorithms.html">Algorithms</a></div><div class="ttdef"><b>Definition</b> Algorithms.h:10</div></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="preprocessor">#endif </span><span class="comment">// ALGORITHMS_H</span></div>
+<div class="ttc" id="aclass_algorithms_html"><div class="ttname"><a href="class_algorithms.html">Algorithms</a></div><div class="ttdef"><b>Definition</b> Algorithms.h:12</div></div>
+<div class="ttc" id="aclass_algorithms_html_a20d020b33ed92baa8deb548fff8852cf"><div class="ttname"><a href="class_algorithms.html#a20d020b33ed92baa8deb548fff8852cf">Algorithms::tspBacktracking</a></div><div class="ttdeci">static std::pair&lt; std::vector&lt; Node * &gt;, double &gt; tspBacktracking(Graph &amp;graph)</div><div class="ttdoc">Solve the Travelling Salesman Problem (TSP) using backtracking.</div><div class="ttdef"><b>Definition</b> Algorithms.cpp:62</div></div>
+<div class="ttc" id="aclass_algorithms_html_a27e32e0fd612c27f12fbcc788afc12bc"><div class="ttname"><a href="class_algorithms.html#a27e32e0fd612c27f12fbcc788afc12bc">Algorithms::nearestNeighborHeuristic</a></div><div class="ttdeci">static double nearestNeighborHeuristic(Graph &amp;graph, std::vector&lt; int &gt; &amp;path)</div><div class="ttdoc">Nearest Neighbor Heuristic for the TSP.</div><div class="ttdef"><b>Definition</b> Algorithms.cpp:238</div></div>
+<div class="ttc" id="aclass_algorithms_html_a6d6d8953389d3ab239a088d7003e73da"><div class="ttname"><a href="class_algorithms.html#a6d6d8953389d3ab239a088d7003e73da">Algorithms::runRealWorldTSP</a></div><div class="ttdeci">void runRealWorldTSP(Graph &amp;Real, int start)</div><div class="ttdoc">Solves the Travelling Salesman Problem (TSP) for a real-world graph.</div><div class="ttdef"><b>Definition</b> Algorithms.cpp:363</div></div>
+<div class="ttc" id="aclass_algorithms_html_a6e4719610d6bb75dd70947ef362b3a6d"><div class="ttname"><a href="class_algorithms.html#a6e4719610d6bb75dd70947ef362b3a6d">Algorithms::prim</a></div><div class="ttdeci">static std::set&lt; Edge * &gt; prim(const Graph &amp;graph)</div><div class="ttdoc">Prim's algorithm.</div><div class="ttdef"><b>Definition</b> Algorithms.cpp:84</div></div>
+<div class="ttc" id="aclass_algorithms_html_a8bfcefece46bc90af159f2d8afc01343"><div class="ttname"><a href="class_algorithms.html#a8bfcefece46bc90af159f2d8afc01343">Algorithms::triangularApproximationHeuristic</a></div><div class="ttdeci">static double triangularApproximationHeuristic(Graph graph, std::vector&lt; int &gt; &amp;path)</div><div class="ttdoc">Triangular Approximation Heuristic for the TSP.</div><div class="ttdef"><b>Definition</b> Algorithms.cpp:171</div></div>
+<div class="ttc" id="aclass_algorithms_html_a9f3c6ca4abd26b0bfe25a42ef9578d31"><div class="ttname"><a href="class_algorithms.html#a9f3c6ca4abd26b0bfe25a42ef9578d31">Algorithms::calculateHaversineDistance</a></div><div class="ttdeci">static double calculateHaversineDistance(double lat1, double lon1, double lat2, double lon2)</div><div class="ttdoc">Calculate the Haversine distance between two points on the Earth's surface.</div><div class="ttdef"><b>Definition</b> Algorithms.cpp:147</div></div>
+<div class="ttc" id="aclass_algorithms_html_aae6e4f21462bb977a460acd43d35ff43"><div class="ttname"><a href="class_algorithms.html#aae6e4f21462bb977a460acd43d35ff43">Algorithms::DFS</a></div><div class="ttdeci">void DFS(int currentIndex, Graph &amp;Real, unordered_set&lt; int &gt; &amp;visited)</div><div class="ttdoc">Depth-First Search (DFS) on a graph.</div><div class="ttdef"><b>Definition</b> Algorithms.cpp:316</div></div>
+<div class="ttc" id="aclass_algorithms_html_aba67881b2cff4406ac89234d72be22de"><div class="ttname"><a href="class_algorithms.html#aba67881b2cff4406ac89234d72be22de">Algorithms::backtrack</a></div><div class="ttdeci">static void backtrack(Graph &amp;graph, Node *node, std::vector&lt; Node * &gt; path, double cost, double &amp;min_cost, int count, std::vector&lt; Node * &gt; &amp;min_path)</div><div class="ttdoc">Recursive backtracking helper function for TSP.</div><div class="ttdef"><b>Definition</b> Algorithms.cpp:35</div></div>
 <div class="ttc" id="aclass_graph_html"><div class="ttname"><a href="class_graph.html">Graph</a></div><div class="ttdef"><b>Definition</b> Graph.h:11</div></div>
 <div class="ttc" id="aclass_node_html"><div class="ttname"><a href="class_node.html">Node</a></div><div class="ttdef"><b>Definition</b> Node.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->

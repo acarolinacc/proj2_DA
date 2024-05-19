@@ -1,23 +1,228 @@
 \doxysection{Algorithms Class Reference}
 \hypertarget{class_algorithms}{}\label{class_algorithms}\index{Algorithms@{Algorithms}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_algorithms_aae6e4f21462bb977a460acd43d35ff43}{DFS}} (int current\+Index, \mbox{\hyperlink{class_graph}{Graph}} \&Real, unordered\+\_\+set$<$ int $>$ \&visited)
+\begin{DoxyCompactList}\small\item\em Depth-\/\+First Search (DFS) on a graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_algorithms_a6d6d8953389d3ab239a088d7003e73da}{run\+Real\+World\+TSP}} (\mbox{\hyperlink{class_graph}{Graph}} \&Real, int start)
+\begin{DoxyCompactList}\small\item\em Solves the Travelling Salesman Problem (TSP) for a real-\/world graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_algorithms_a6e4719610d6bb75dd70947ef362b3a6d}\label{class_algorithms_a6e4719610d6bb75dd70947ef362b3a6d} 
-static std\+::set$<$ \mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries prim} (const \mbox{\hyperlink{class_graph}{Graph}} \&graph)
-\item 
-\Hypertarget{class_algorithms_a8bfcefece46bc90af159f2d8afc01343}\label{class_algorithms_a8bfcefece46bc90af159f2d8afc01343} 
-static double {\bfseries triangular\+Approximation\+Heuristic} (\mbox{\hyperlink{class_graph}{Graph}} graph, std\+::vector$<$ int $>$ \&path)
-\item 
+static std\+::set$<$ \mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_algorithms_a6e4719610d6bb75dd70947ef362b3a6d}{prim}} (const \mbox{\hyperlink{class_graph}{Graph}} \&graph)
+\begin{DoxyCompactList}\small\item\em Prim\textquotesingle{}s algorithm. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{class_algorithms_a8bfcefece46bc90af159f2d8afc01343}{triangular\+Approximation\+Heuristic}} (\mbox{\hyperlink{class_graph}{Graph}} graph, std\+::vector$<$ int $>$ \&path)
+\begin{DoxyCompactList}\small\item\em Triangular Approximation Heuristic for the TSP. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{class_algorithms_a9f3c6ca4abd26b0bfe25a42ef9578d31}{calculate\+Haversine\+Distance}} (double lat1, double lon1, double lat2, double lon2)
+\begin{DoxyCompactList}\small\item\em Calculate the Haversine distance between two points on the Earth\textquotesingle{}s surface. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{class_algorithms_a27e32e0fd612c27f12fbcc788afc12bc}{nearest\+Neighbor\+Heuristic}} (\mbox{\hyperlink{class_graph}{Graph}} \&graph, std\+::vector$<$ int $>$ \&path)
+\begin{DoxyCompactList}\small\item\em Nearest Neighbor Heuristic for the TSP. \end{DoxyCompactList}\item 
+static std\+::pair$<$ std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} $>$, double $>$ \mbox{\hyperlink{class_algorithms_a20d020b33ed92baa8deb548fff8852cf}{tsp\+Backtracking}} (\mbox{\hyperlink{class_graph}{Graph}} \&graph)
+\begin{DoxyCompactList}\small\item\em Solve the Travelling Salesman Problem (TSP) using backtracking. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_algorithms_aba67881b2cff4406ac89234d72be22de}{backtrack}} (\mbox{\hyperlink{class_graph}{Graph}} \&graph, \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}node, std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} $>$ path, double cost, double \&min\+\_\+cost, int count, std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} $>$ \&min\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Recursive backtracking helper function for TSP. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_algorithms_aba67881b2cff4406ac89234d72be22de}\label{class_algorithms_aba67881b2cff4406ac89234d72be22de} 
+\index{Algorithms@{Algorithms}!backtrack@{backtrack}}
+\index{backtrack@{backtrack}!Algorithms@{Algorithms}}
+\doxysubsubsection{\texorpdfstring{backtrack()}{backtrack()}}
+{\footnotesize\ttfamily void Algorithms\+::backtrack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}} \&}]{graph,  }\item[{\mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}}]{node,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} $>$}]{path,  }\item[{double}]{cost,  }\item[{double \&}]{min\+\_\+cost,  }\item[{int}]{count,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} $>$ \&}]{min\+\_\+path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Recursive backtracking helper function for TSP. 
+
+This function recursively explores all possible paths in the graph to find the minimum cost Hamiltonian cycle (tour). It updates the minimum cost and corresponding path whenever a complete tour with a lower cost is found.
+
+Time complexity\+: O(\+K \texorpdfstring{$^\wedge$}{\string^} N)
+
+K -\/ number of times the function calls itself 
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the TSP. \\
+\hline
+{\em node} & The current node being visited. \\
+\hline
+{\em path} & The current path of nodes visited so far. \\
+\hline
+{\em cost} & The current cost of the path. \\
+\hline
+{\em min\+\_\+cost} & A reference to the minimum cost found so far. \\
+\hline
+{\em count} & The count of nodes visited in the current path. \\
+\hline
+{\em min\+\_\+path} & A reference to the vector storing the minimum cost path found so far. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_algorithms_a9f3c6ca4abd26b0bfe25a42ef9578d31}\label{class_algorithms_a9f3c6ca4abd26b0bfe25a42ef9578d31} 
-static double {\bfseries calculate\+Haversine\+Distance} (double lat1, double lon1, double lat2, double lon2)
-\item 
+\index{Algorithms@{Algorithms}!calculateHaversineDistance@{calculateHaversineDistance}}
+\index{calculateHaversineDistance@{calculateHaversineDistance}!Algorithms@{Algorithms}}
+\doxysubsubsection{\texorpdfstring{calculateHaversineDistance()}{calculateHaversineDistance()}}
+{\footnotesize\ttfamily double Algorithms\+::calculate\+Haversine\+Distance (\begin{DoxyParamCaption}\item[{double}]{lat1,  }\item[{double}]{lon1,  }\item[{double}]{lat2,  }\item[{double}]{lon2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Calculate the Haversine distance between two points on the Earth\textquotesingle{}s surface. 
+
+This function computes the Haversine distance, which is the shortest distance over the Earth\textquotesingle{}s surface, giving an "{}as-\/the-\/crow-\/flies"{} distance between two points (specified in latitude and longitude).
+
+Time complexity\+: O(1) 
+\begin{DoxyParams}{Parameters}
+{\em lat1} & The latitude of the first point in degrees. \\
+\hline
+{\em lon1} & The longitude of the first point in degrees. \\
+\hline
+{\em lat2} & The latitude of the second point in degrees. \\
+\hline
+{\em lon2} & The longitude of the second point in degrees. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+(double) The Haversine distance between the two points in kilometers. 
+\end{DoxyReturn}
+\Hypertarget{class_algorithms_aae6e4f21462bb977a460acd43d35ff43}\label{class_algorithms_aae6e4f21462bb977a460acd43d35ff43} 
+\index{Algorithms@{Algorithms}!DFS@{DFS}}
+\index{DFS@{DFS}!Algorithms@{Algorithms}}
+\doxysubsubsection{\texorpdfstring{DFS()}{DFS()}}
+{\footnotesize\ttfamily void Algorithms\+::\+DFS (\begin{DoxyParamCaption}\item[{int}]{current\+Index,  }\item[{\mbox{\hyperlink{class_graph}{Graph}} \&}]{Real,  }\item[{unordered\+\_\+set$<$ int $>$ \&}]{visited }\end{DoxyParamCaption})}
+
+
+
+Depth-\/\+First Search (DFS) on a graph. 
+
+This function performs a Depth-\/\+First Search (DFS) starting from a given node index. It explores as far as possible along each branch before backtracking, marking nodes as visited to avoid cycles and repeated visits.
+
+Time complexity\+: O(V + E)
+
+V -\/ number of vertices (or nodes) in the graph
+
+E -\/ number of edges in the graph 
+\begin{DoxyParams}{Parameters}
+{\em current\+Index} & The index of the current node to start the DFS from. \\
+\hline
+{\em Real} & The graph on which the DFS is performed. \\
+\hline
+{\em visited} & An unordered set that keeps track of visited node indices to avoid revisiting nodes. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_algorithms_a27e32e0fd612c27f12fbcc788afc12bc}\label{class_algorithms_a27e32e0fd612c27f12fbcc788afc12bc} 
-static double {\bfseries nearest\+Neighbor\+Heuristic} (\mbox{\hyperlink{class_graph}{Graph}} \&graph, std\+::vector$<$ int $>$ \&path)
-\end{DoxyCompactItemize}
+\index{Algorithms@{Algorithms}!nearestNeighborHeuristic@{nearestNeighborHeuristic}}
+\index{nearestNeighborHeuristic@{nearestNeighborHeuristic}!Algorithms@{Algorithms}}
+\doxysubsubsection{\texorpdfstring{nearestNeighborHeuristic()}{nearestNeighborHeuristic()}}
+{\footnotesize\ttfamily double Algorithms\+::nearest\+Neighbor\+Heuristic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}} \&}]{graph,  }\item[{std\+::vector$<$ int $>$ \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Nearest Neighbor Heuristic for the TSP. 
+
+This function implements the nearest neighbor heuristic to approximate the solution to the Travelling Salesman Problem (TSP). It starts from a given node and repeatedly visits the nearest unvisited node until all nodes are visited.
+
+Time complexity\+: O(\+V\texorpdfstring{$^\wedge$}{\string^}2)
+
+V -\/ number of vertices (or nodes) in the graph 
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the TSP. \\
+\hline
+{\em path} & A vector that will be filled with the order of node IDs representing the approximate tour. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+(double) The estimated cost of the TSP tour. 
+\end{DoxyReturn}
+\Hypertarget{class_algorithms_a6e4719610d6bb75dd70947ef362b3a6d}\label{class_algorithms_a6e4719610d6bb75dd70947ef362b3a6d} 
+\index{Algorithms@{Algorithms}!prim@{prim}}
+\index{prim@{prim}!Algorithms@{Algorithms}}
+\doxysubsubsection{\texorpdfstring{prim()}{prim()}}
+{\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{class_edge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ Algorithms\+::prim (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_graph}{Graph}} \&}]{graph }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Prim\textquotesingle{}s algorithm. 
+
+Time complexity\+: O(\+E log V)
+
+V -\/ number of vertices (or nodes) in the graph
+
+E -\/ number of edges in the graph 
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph on which to run Prim\textquotesingle{}s algorithm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+(std\+::set$<$\+Edge\texorpdfstring{$\ast$}{*}$>$) The set of edges forming the minimum spanning tree. 
+\end{DoxyReturn}
+\Hypertarget{class_algorithms_a6d6d8953389d3ab239a088d7003e73da}\label{class_algorithms_a6d6d8953389d3ab239a088d7003e73da} 
+\index{Algorithms@{Algorithms}!runRealWorldTSP@{runRealWorldTSP}}
+\index{runRealWorldTSP@{runRealWorldTSP}!Algorithms@{Algorithms}}
+\doxysubsubsection{\texorpdfstring{runRealWorldTSP()}{runRealWorldTSP()}}
+{\footnotesize\ttfamily void Algorithms\+::run\+Real\+World\+TSP (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}} \&}]{Real,  }\item[{int}]{start }\end{DoxyParamCaption})}
+
+
+
+Solves the Travelling Salesman Problem (TSP) for a real-\/world graph. 
+
+This function executes the TSP algorithm on a given graph representing real-\/world locations, starting from a specified node. It typically involves setting up the graph, running a TSP heuristic or exact algorithm, and potentially outputting or processing the results.
+
+Time complexity\+: O(\+V\texorpdfstring{$^\wedge$}{\string^}2)
+
+V -\/ number of vertices (or nodes) in the graph 
+\begin{DoxyParams}{Parameters}
+{\em Real} & The graph representing the real-\/world TSP problem. \\
+\hline
+{\em start} & The starting node index for the TSP tour. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_algorithms_a8bfcefece46bc90af159f2d8afc01343}\label{class_algorithms_a8bfcefece46bc90af159f2d8afc01343} 
+\index{Algorithms@{Algorithms}!triangularApproximationHeuristic@{triangularApproximationHeuristic}}
+\index{triangularApproximationHeuristic@{triangularApproximationHeuristic}!Algorithms@{Algorithms}}
+\doxysubsubsection{\texorpdfstring{triangularApproximationHeuristic()}{triangularApproximationHeuristic()}}
+{\footnotesize\ttfamily double Algorithms\+::triangular\+Approximation\+Heuristic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}}}]{graph,  }\item[{std\+::vector$<$ int $>$ \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Triangular Approximation Heuristic for the TSP. 
+
+This function implements a heuristic approach to approximate the solution to the Travelling Salesman Problem (TSP) using a triangular inequality-\/based method.
+
+Time complexity\+: O(\+V\texorpdfstring{$^\wedge$}{\string^}2)
+
+V -\/ number of vertices (or nodes) in the graph 
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the TSP. \\
+\hline
+{\em path} & A vector that will be filled with the order of node IDs representing the approximate tour. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+(double) The estimated cost of the TSP tour. 
+\end{DoxyReturn}
+\Hypertarget{class_algorithms_a20d020b33ed92baa8deb548fff8852cf}\label{class_algorithms_a20d020b33ed92baa8deb548fff8852cf} 
+\index{Algorithms@{Algorithms}!tspBacktracking@{tspBacktracking}}
+\index{tspBacktracking@{tspBacktracking}!Algorithms@{Algorithms}}
+\doxysubsubsection{\texorpdfstring{tspBacktracking()}{tspBacktracking()}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*} $>$, double $>$ Algorithms\+::tsp\+Backtracking (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}} \&}]{graph }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Solve the Travelling Salesman Problem (TSP) using backtracking. 
+
+This function uses a backtracking approach to find the minimum cost Hamiltonian cycle (tour) in a given graph. It explores all possible tours and keeps track of the tour with the minimum cost.
+
+Time complexity\+: O(\+K \texorpdfstring{$^\wedge$}{\string^} N)
+
+K -\/ number of times the function calls itself 
+\begin{DoxyParams}{Parameters}
+{\em graph} & The graph representing the TSP. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+(std\+::pair\texorpdfstring{$<$}{<}std\+::vector$<$\+Node\texorpdfstring{$\ast$}{*}$>$, double\texorpdfstring{$>$}{>}) A pair containing the vector of nodes representing the minimum cost tour and a double containing said cost. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/\+Utilizador/\+One\+Drive/\+Documentos/\+Code/\+CLion-\/stuff/\+DA/\+Project2/proj2\+\_\+\+DA/src/Algorithms.\+h\item 
-C\+:/\+Users/\+Utilizador/\+One\+Drive/\+Documentos/\+Code/\+CLion-\/stuff/\+DA/\+Project2/proj2\+\_\+\+DA/src/Algorithms.\+cpp\end{DoxyCompactItemize}
+CLion-\/stuff/\+DA/\+Project2/proj2\+\_\+\+DA/src/Algorithms.\+h\item 
+CLion-\/stuff/\+DA/\+Project2/proj2\+\_\+\+DA/src/Algorithms.\+cpp\end{DoxyCompactItemize}
